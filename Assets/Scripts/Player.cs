@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
@@ -28,22 +30,27 @@ public class Player : MonoBehaviour
 
     void Mouvement()
     {
+        Vector2 mouvement = Vector2.zero;
         if (moveLeft.IsPressed())
         {
-            transform.position = new Vector3(transform.position.x - playerSpeed, transform.position.y, transform.position.z);
+            mouvement.x = - 1;
         }
         else if (moveRight.IsPressed())
         {
-            transform.position = new Vector3(transform.position.x + playerSpeed, transform.position.y, transform.position.z);
+            mouvement.x = 1;
         }
         
         if (moveUp.IsPressed())
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + playerSpeed, transform.position.z);
+            mouvement.y = 1;
         }
         else if (moveDown.IsPressed())
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - playerSpeed, transform.position.z);
+            mouvement.y = - 1;
         }
+
+        mouvement = Vector2.Normalize(mouvement) * playerSpeed;
+
+        transform.position += new Vector3(mouvement.x,mouvement.y, 0);
     }
 }
