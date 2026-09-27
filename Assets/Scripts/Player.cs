@@ -13,16 +13,15 @@ public class Player : MonoBehaviour
     InputAction moveUp;
     InputAction moveDown;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         moveLeft = InputSystem.actions.FindAction("MoveLeft");
         moveRight = InputSystem.actions.FindAction("MoveRight");
         moveUp = InputSystem.actions.FindAction("MoveUp");
         moveDown = InputSystem.actions.FindAction("MoveDown");
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         Mouvement();
@@ -49,7 +48,7 @@ public class Player : MonoBehaviour
             mouvement.y = - 1;
         }
 
-        mouvement = Vector2.Normalize(mouvement) * playerSpeed;
+        mouvement = Vector2.Normalize(mouvement) * playerSpeed * Time.deltaTime;
 
         transform.position += new Vector3(mouvement.x,mouvement.y, 0);
     }
