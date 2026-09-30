@@ -589,6 +589,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 409039435}
     - target: {fileID: 8286038017412015003, guid: 767dafb47a4c2944db484d78375017e6, type: 3}
+      propertyPath: ennemiLife
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286038017412015003, guid: 767dafb47a4c2944db484d78375017e6, type: 3}
       propertyPath: ennemiSpeed
       value: 0.001
       objectReference: {fileID: 0}

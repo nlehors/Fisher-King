@@ -17,6 +17,7 @@ public class Ennemi : MonoBehaviour
     void Update()
     {
         GoThere(player.transform.position,ennemiSpeed);
+        Health();
     }
 
     void GoThere(Vector3 target, float speed)
@@ -28,4 +29,13 @@ public class Ennemi : MonoBehaviour
         transform.position += new Vector3(vector.x, vector.y, 0);
     }
 
+    void Health()
+    {
+        if (ennemiLife <= 0)
+        {
+            // à changer pour un destroy une fois le système de wave fait.
+            this.gameObject.SetActive(false);
+        }
+    }
+    
 }

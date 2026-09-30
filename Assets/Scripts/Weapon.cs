@@ -1,10 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using static TimerScript;
+
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField]public float damage = 10;
+    [SerializeField]public float damage = 10f;
     [SerializeField]public int angleRotation = 45;
     [SerializeField] public float couldown = 1f;
 
@@ -47,16 +47,14 @@ public class Weapon : MonoBehaviour
     
     
     
-
     private void Rotation(float angle)
     { 
         pos.Rotate(pos.forward,angle); 
-        
     }
 
     private void Damage(Ennemi target)
     {
-        Ennemi.ennemiLife - damage;
+        target.ennemiLife -= damage;
     }
 
 }
