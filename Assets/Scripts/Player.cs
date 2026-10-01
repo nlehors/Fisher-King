@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public float playerSpeed;
+    public int healthPoint = 10;
     
     InputAction moveLeft;
     InputAction moveRight;
@@ -25,7 +26,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         Mouvement();
+        Health();
     }
+    
 
     void Mouvement()
     {
@@ -52,4 +55,12 @@ public class Player : MonoBehaviour
 
         transform.position += new Vector3(mouvement.x,mouvement.y, 0);
     }
+    void Health()
+    {
+        if (healthPoint <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+    
 }
