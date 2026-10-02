@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class FishingController : MonoBehaviour
 {
@@ -9,8 +12,12 @@ public class FishingController : MonoBehaviour
     public float moveSpeed = 100f;
     public GameObject fishingUI;
     public bool isFishing;
-
-    private float direction = 1f;
+    [SerializeField] private List<FishData> fishDataList;
+    public GameObject fishingReward;
+    public SpriteRenderer fishingRewardSprite;
+    public TMP_Text fishingRewardText;
+    
+    
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
     private int successCount = 0;
@@ -33,6 +40,7 @@ public class FishingController : MonoBehaviour
         QTE();
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     void QTE ()
     {
         
@@ -41,12 +49,10 @@ public class FishingController : MonoBehaviour
         if (Vector3.Distance(pointerTransform.position, pointA.position) < 0.1f) 
         {
             targetPosition = pointB.position;
-            direction = -1f;
         }
         else if (Vector3.Distance(pointerTransform.position, pointB.position) < 0.1f) 
         {
             targetPosition = pointA.position;
-            direction = 1f;
         }
        
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
