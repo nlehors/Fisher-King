@@ -6,25 +6,71 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public int playerLife;
+    
     public float playerSpeed;
     
-    InputAction moveLeft;
-    InputAction moveRight;
-    InputAction moveUp;
-    InputAction moveDown;
+    public float invincibilityTime;
+    float invincibilityTimeRemaining;
+
+    InputAction moveLeft = InputSystem.actions.FindAction("MoveLeft");
+    InputAction moveRight = InputSystem.actions.FindAction("MoveRight");
+    InputAction moveUp = InputSystem.actions.FindAction("MoveUp");
+    InputAction moveDown = InputSystem.actions.FindAction("MoveDown");
+
+    public string fishingZoneTag;
+    public string shopTag;
+    public string ennemiTag;
+
+    public bool isOnFishingZone;
+    public bool isOnShop;
     
     void Start()
     {
-        moveLeft = InputSystem.actions.FindAction("MoveLeft");
-        moveRight = InputSystem.actions.FindAction("MoveRight");
-        moveUp = InputSystem.actions.FindAction("MoveUp");
-        moveDown = InputSystem.actions.FindAction("MoveDown");
-
+        
     }
 
     void Update()
     {
         Mouvement();
+
+        invincibilityTimeRemaining -= Time.deltaTime;
+    }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(fishingZoneTag))
+        {
+            isOnFishingZone = true;
+        }
+        else if (other.CompareTag(shopTag))
+        {
+            isOnShop = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(fishingZoneTag))
+        {
+            isOnFishingZone = false;
+        }
+        else if (other.CompareTag(shopTag))
+        {
+            isOnShop = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag(ennemiTag))
+        {
+            if (invincibilityTimeRemaining < 0)
+            {
+                playerLife--;
+                invincibilityTimeRemaining = invincibilityTime;
+            }
+        }
     }
 
     void Mouvement()
@@ -52,4 +98,6 @@ public class Player : MonoBehaviour
 
         transform.position += new Vector3(mouvement.x,mouvement.y, 0);
     }
+
+    
 }
