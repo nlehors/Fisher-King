@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class FishingZone : MonoBehaviour
 {
-    public FishingUI fishingUI;
+    public FishingManager fishingManager;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +13,7 @@ public class FishingZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
                 
-            fishingUI.isFishing = true;
+            fishingManager.isFishing = true;
 
         }
     }
@@ -22,7 +22,7 @@ public class FishingZone : MonoBehaviour
         Debug.Log("Exit");
         if (other.CompareTag("Player"))
         {
-            fishingUI.isFishing = false;
+            fishingManager.isFishing = false;
         }
     }
     

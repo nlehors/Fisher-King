@@ -12,10 +12,6 @@ public class FishingController : MonoBehaviour
     public float moveSpeed = 100f;
     public GameObject fishingUI;
     public bool isFishing;
-    [SerializeField] private List<FishData> fishDataList;
-    public GameObject fishingReward;
-    public SpriteRenderer fishingRewardSprite;
-    public TMP_Text fishingRewardText;
     
     
     private RectTransform pointerTransform;
@@ -34,14 +30,9 @@ public class FishingController : MonoBehaviour
         safeZones[0].gameObject.SetActive(true);
         Restart();
     }
-
-    void Update()
-    {
-        QTE();
-    }
     
-    // ReSharper disable Unity.PerformanceAnalysis
-    void QTE ()
+    
+   public void QTE ()
     {
         
         pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime);

@@ -1,12 +1,19 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FishingUI : MonoBehaviour
+public class FishingManager : MonoBehaviour
 {
     public GameObject fishingUI;
     public bool isFishing;
     public FishingController fishingController;
+    
+    [SerializeField] private List<FishData> fishDataList;
+    public GameObject fishingReward;
+    public SpriteRenderer fishingRewardSprite;
+    public TMP_Text fishingRewardText;
     
     void Start()
     {
@@ -19,6 +26,7 @@ public class FishingUI : MonoBehaviour
         {
             isFishing = true;
             fishingUI.SetActive(true);
+            fishingController.QTE();
         }
 
         if (isFishing==false)
