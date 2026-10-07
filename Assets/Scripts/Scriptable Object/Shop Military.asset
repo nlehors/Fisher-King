@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05aa4ba5241e8d44596eb09da8b0aaf7, type: 3}
-  m_Name: Missiles
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponSo
-  weaponName: 'Missiles '
-  weaponDescription: 
-  price1: 1
-  price2: 2
-  price3: 3
-  icon: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 714a94b450eed2845ac5d14a728d0651, type: 3}
+  m_Name: Shop Military
+  m_EditorClassIdentifier: Assembly-CSharp::ShopSo
+  shopName: Military
+  shopIcon: {fileID: 0}
+  shopGreeting: 

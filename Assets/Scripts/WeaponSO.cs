@@ -7,12 +7,13 @@ public class WeaponSo : ScriptableObject
     
    [TextArea] public string weaponDescription;
 
-    public int price1;
+    public int price1 = 1;
     
-    public int price2;
+    public int price2 = 2;
     
-    public int price3;
+    public int price3 = 3;
 
-    public Sprite icon; 
+    public Sprite icon;
+
 
 }

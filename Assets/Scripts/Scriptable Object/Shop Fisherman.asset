@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05aa4ba5241e8d44596eb09da8b0aaf7, type: 3}
-  m_Name: Missiles
+  m_Name: Shop Fisherman
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSo
-  weaponName: 'Missiles '
+  weaponName: 'Fisherman '
   weaponDescription: 
-  price1: 1
-  price2: 2
-  price3: 3
+  price1: 0
+  price2: 0
+  price3: 0
   icon: {fileID: 0}

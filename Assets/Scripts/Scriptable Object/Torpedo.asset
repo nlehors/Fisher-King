@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSo
   weaponName: 
   weaponDescription: 
-  price1: 0
-  price2: 0
-  price3: 0
+  price1: 1
+  price2: 2
+  price3: 3
   icon: {fileID: 0}

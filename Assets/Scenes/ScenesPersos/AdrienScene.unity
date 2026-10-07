@@ -302,8 +302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add29adcd08d2874086f2bc47d124fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  playerLife: 0
   playerSpeed: 5
-  healthPoint: 10
+  invincibilityTime: 0
+  fishingZoneTag: 
+  shopTag: 
+  ennemiTag: 
+  isOnFishingZone: 0
+  isOnShop: 1
 --- !u!61 &409039439
 BoxCollider2D:
   m_ObjectHideFlags: 0
