@@ -17,8 +17,7 @@ public class XpAttract : MonoBehaviour
     {
         if (collider.CompareTag("Xp"))
         {
-            Debug.Log("cacafesse");
-            collider.transform.position = Vector2.MoveTowards(collider.transform.position, gameObject.transform.position, attractSpeed * Time.deltaTime);
+           collider.transform.position = Vector2.MoveTowards(collider.transform.position, gameObject.transform.position, attractSpeed * Time.deltaTime);
         }
     }
 }
