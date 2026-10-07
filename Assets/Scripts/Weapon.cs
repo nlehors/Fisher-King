@@ -6,11 +6,16 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
     [SerializeField]public int angleRotation = 45;
-    [SerializeField] public float couldown = 1f;
+    [SerializeField]public float couldown = 1f;
+    [SerializeField]public bool canRotate;
+    [SerializeField]public bool canShoot;
 
+    [SerializeField] public GameObject prefabToGenerate;
+    
     private Transform pos;
     private Quaternion temp;
     private float timer;
+    
     
 
     void Start()
@@ -28,11 +33,16 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            Rotation(angleRotation);
+            if (canRotate)
+            {
+                Rotation(angleRotation);
+            }
+            CreateProjectile();
+            
             timer = couldown;
         }
 
-        if (pos.rotation.eulerAngles.z >= angleRotation)
+        if (pos.rotation.eulerAngles.z > angleRotation)
         {
             pos.rotation = temp;
         }
@@ -57,4 +67,8 @@ public class Weapon : MonoBehaviour
         target.ennemiLife -= damage;
     }
 
+    private void CreateProjectile()
+    {
+        Instantiate(prefabToGenerate);
+    }
 }

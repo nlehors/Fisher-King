@@ -214,6 +214,7 @@ Transform:
   m_Children:
   - {fileID: 927451670}
   - {fileID: 429044316}
+  - {fileID: 885157217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &409039438
@@ -401,7 +402,7 @@ GameObject:
   - component: {fileID: 885157218}
   m_Layer: 0
   m_Name: XpAttracter
-  m_TagString: Untagged
+  m_TagString: AttracterXp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,12 +475,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885157215}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 409039437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &885157218
 MonoBehaviour:
@@ -494,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XpAttract
   radius: 2.5
-  attractSpeed: 1000
+  attractSpeed: 10
 --- !u!58 &885157219
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -895,5 +896,4 @@ SceneRoots:
   - {fileID: 1259885691}
   - {fileID: 409039437}
   - {fileID: 4400068057682060128}
-  - {fileID: 885157217}
   - {fileID: 1697869928}

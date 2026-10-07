@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+
     void SpawnEnnemi(GameObject ennemiPrefab, Vector3 spawnPosition)
     {
         ennemiList.Add(Instantiate(ennemiPrefab, spawnPosition, Quaternion.identity));
