@@ -6,16 +6,26 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player;
 
-    List<GameObject> ennemiList = new List<GameObject>();
+    public List<GameObject> ennemiList = new List<GameObject>();
 
     public GameObject ennemiPrefab;
+    
+    //save data
+    public float gameTime;
+    public int ennemiKilled;
+    public int numberOfGame;
+    public int numberOfwin;
+    
+    public float volume;
+
+    public bool[] fishCollection;
+    //end of save data
     
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -31,6 +41,36 @@ public class GameManager : MonoBehaviour
     {
         ennemiList.Remove(ennemi);
     }
+
+    public void ChargeTheGame()
+    {
+        SaveData data = SaveSystem.LoadPlayer();
+        
+        gameTime = data.gameTime;
+        ennemiKilled = data.ennemiKilled;
+        numberOfGame = data.numberOfGame;
+        numberOfwin = data.numberOfwin;
+        
+        volume = data.volume;
+        
+        fishCollection = data.fishCollection;
+    }
+    
+    public void SaveTheGame()
+    {
+        SaveSystem.SaveData(this);
+    }
+
+    public void EraseSave()
+    {
+        SaveSystem.DestroySave();
+    }
+
+    public List<GameObject> GetEnnemiList()
+    {
+        return ennemiList;
+    }
+    
 }
 
 //[Verse 1]
