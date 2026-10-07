@@ -219,16 +219,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235639145}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1633485034}
+  m_Father: {fileID: 1402896224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51, y: 176.5}
+  m_AnchoredPosition: {x: -48.24649, y: -2.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235639147
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8934a5902fb08d349bebb8406afd336d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingZone
-  fishingUI: {fileID: 1001113830}
+  fishingManager: {fileID: 1001113830}
 --- !u!212 &727390317
 SpriteRenderer:
   serializedVersion: 3
@@ -999,6 +999,14 @@ MonoBehaviour:
   fishingUI: {fileID: 919387529}
   isFishing: 0
   fishingController: {fileID: 1783135937}
+  fishDataList:
+  - {fileID: 11400000, guid: 9db47c4e7a7db62468363b85547477a5, type: 2}
+  - {fileID: 11400000, guid: 55660330341cb044b9ef96bf7af5ef5a, type: 2}
+  - {fileID: 11400000, guid: 73e68fa36a2d92b4d896272ef68437d1, type: 2}
+  - {fileID: 11400000, guid: 77e8de979356e2e45bb0a892a67c96eb, type: 2}
+  fishingReward: {fileID: 0}
+  fishingRewardSprite: {fileID: 0}
+  fishingRewardText: {fileID: 0}
 --- !u!1 &1025122941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,7 +1248,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 235639146}
   m_Father: {fileID: 1633485034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1432,7 +1441,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1402896224}
-  - {fileID: 235639146}
   m_Father: {fileID: 1001113829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1600,15 +1608,7 @@ MonoBehaviour:
   - {fileID: 960210569}
   moveSpeed: 1000
   fishingUI: {fileID: 919387529}
-  isFishing: 0
-  fishDataList:
-  - {fileID: 11400000, guid: 9db47c4e7a7db62468363b85547477a5, type: 2}
-  - {fileID: 11400000, guid: 55660330341cb044b9ef96bf7af5ef5a, type: 2}
-  - {fileID: 11400000, guid: 73e68fa36a2d92b4d896272ef68437d1, type: 2}
-  - {fileID: 11400000, guid: 77e8de979356e2e45bb0a892a67c96eb, type: 2}
-  fishingReward: {fileID: 1402896223}
-  fishingRewardSprite: {fileID: 0}
-  fishingRewardText: {fileID: 235639147}
+  fishingManager: {fileID: 1001113830}
 --- !u!1001 &4400068057682060128
 PrefabInstance:
   m_ObjectHideFlags: 0

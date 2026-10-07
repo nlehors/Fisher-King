@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class FishingController : MonoBehaviour
 {
@@ -11,7 +8,7 @@ public class FishingController : MonoBehaviour
     public RectTransform[] safeZones;
     public float moveSpeed = 100f;
     public GameObject fishingUI;
-    public bool isFishing;
+    public FishingManager fishingManager;
     
     
     private RectTransform pointerTransform;
@@ -53,7 +50,7 @@ public class FishingController : MonoBehaviour
             if (qteCount >= 3)
             {
                  fishingUI.SetActive(false);
-                 isFishing = false;
+                 fishingManager.isFishing = false;
                  Restart();
             }
         }
@@ -79,7 +76,7 @@ public class FishingController : MonoBehaviour
     }
     public void Restart()
     {
-        if (isFishing == false)
+        if (fishingManager.isFishing == false)
         {
             qteCount = 0;
             successCount = 0;
