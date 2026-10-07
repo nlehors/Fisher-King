@@ -489,8 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 409039435}
-  ennemi: {fileID: 7897076867823202234, guid: 767dafb47a4c2944db484d78375017e6, type: 3}
-  ennemiList: []
+  ennemiPrefab: {fileID: 7897076867823202234, guid: 767dafb47a4c2944db484d78375017e6, type: 3}
 --- !u!1001 &1876066263
 PrefabInstance:
   m_ObjectHideFlags: 0

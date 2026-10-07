@@ -110,7 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ennemi
   ennemiSpeed: 1
   ennemiLife: 10
-  xpDrop: 1
+  xpPrefab: {fileID: 5972348768788971975, guid: 08ea343dd3690744590d97505165313a, type: 3}
+  myself: {fileID: 0}
 --- !u!61 &3512589226251973923
 BoxCollider2D:
   m_ObjectHideFlags: 0

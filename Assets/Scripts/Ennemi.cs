@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Ennemi : MonoBehaviour
     public float ennemiLife;
 
     public GameObject xpPrefab;
-
+    
     GameManager gameManager;
     
     void Start()
@@ -33,6 +34,7 @@ public class Ennemi : MonoBehaviour
     void death()
     {
         Instantiate(xpPrefab);
-        Destroy(this);
+        gameManager.NukeMe(this.gameObject);
+        Destroy(this.gameObject);
     }
 }
