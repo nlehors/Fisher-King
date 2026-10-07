@@ -8,6 +8,9 @@ TagManager:
   - Shop
   - Ennemi
   - Xp
+  serializedVersion: 3
+  tags:
+  - Fish
   layers:
   - Default
   - TransparentFX
