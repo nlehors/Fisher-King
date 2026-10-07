@@ -3,25 +3,37 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private GameObject shopUI;
+    
+    [SerializeField] private GameObject pressSpace;
+    
+    private bool _isPlayerInCollider;
 
     private void Start()
     {
+        (_isPlayerInCollider) = false;
+        
         shopUI.SetActive(false);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            shopUI.SetActive(true);
+            _isPlayerInCollider = true;
+            
+            pressSpace.SetActive(true);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    void Update()
     {
-        if (other.CompareTag("Player"))
+        if (_isPlayerInCollider) 
         {
-            shopUI.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                shopUI.SetActive(true);
+            }
+               
         }
     }
 }
