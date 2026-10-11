@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ShopSo 2
   m_EditorClassIdentifier: Assembly-CSharp::ShopSo
   shopName: 
-  shopSprite: {fileID: 0}
+  shopSprite: {fileID: 5936356172364887011, guid: 109e589aa88e4874cadd010c285b7471, type: 3}
   shopGreeting: 
