@@ -1,18 +1,25 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 
-[CreateAssetMenu(fileName = "WeaponSO", menuName = "Scriptable Objects/WeaponSO")]
+[CreateAssetMenu(fileName = "WeaponSo", menuName = "Scriptable Objects/WeaponSO")]
 public class WeaponSo : ScriptableObject
-{   
-    public string weaponName; 
-    
-    [TextArea] public string weaponDescription;
 
-    ArrayList My_array = new ArrayList();
-
+{
 
     public Sprite icon;
+
+    public string WeaponName;
+
+    [TextArea] public string WeaponDescription;
+
+    //liste des niveaux et prix 
+    public List<int> prices = new List<int> {1, 2, 3};
+
+    
+
+
+
 
 
 }

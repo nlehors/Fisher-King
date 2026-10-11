@@ -5,7 +5,7 @@ public class ShopSo : ScriptableObject
 {
     public string shopName; 
     
-    public Sprite shopIcon;
+    public Sprite shopSprite;
     
     [TextArea] public string shopGreeting;
 }
