@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public int playerLife;
-    
-    public float playerSpeed;
+    [SerializeField]public int playerLife;
+    [SerializeField]public float playerSpeed;
+    [SerializeField]public float baseDamage = 5f;
     
     public float invincibilityTime;
     float invincibilityTimeRemaining;

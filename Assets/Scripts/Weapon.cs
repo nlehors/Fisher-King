@@ -15,11 +15,12 @@ public class Weapon : MonoBehaviour
     private Transform pos;
     private Quaternion temp;
     private float timer;
-    
-    
+    private Player playerScript;
+    private float totalDamage;
 
     void Start()
     {
+        playerScript = GetComponentInParent<Player>();
         pos = GetComponent<Transform>();
         temp = pos.rotation;
         timer = couldown;
@@ -27,6 +28,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        totalDamage = damage + playerScript.baseDamage;
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -51,8 +53,15 @@ public class Weapon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     { 
-        Ennemi ennemiScript = collision.GetComponent<Ennemi>();
-        Damage(ennemiScript);
+        if (collision.CompareTag("Ennemi"))
+        {
+            Ennemi ennemiScript = collision.GetComponent<Ennemi>();
+            Damage(ennemiScript);
+            if (ennemiScript.ennemiLife <= 0)
+            {
+                ennemiScript.Death();
+            }
+        }
     }
     
     
@@ -64,7 +73,7 @@ public class Weapon : MonoBehaviour
 
     private void Damage(Ennemi target)
     {
-        target.ennemiLife -= damage;
+        target.ennemiLife -= totalDamage;
     }
 
     private void CreateProjectile()
