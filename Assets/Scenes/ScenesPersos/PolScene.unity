@@ -481,8 +481,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b0d5c91e1e71f4c9c1d4a5019b10a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 1591340435}
+  player: {fileID: 1591340438}
+  ennemiList: []
   ennemiPrefab: {fileID: 7897076867823202234, guid: 767dafb47a4c2944db484d78375017e6, type: 3}
+  gameTime: 0
+  ennemiKilled: 0
+  numberOfGame: 0
+  numberOfwin: 0
+  volume: 0
+  fishCollection: 
+  moneyDisplay: {fileID: 0}
+  ennemiCap: 10
 --- !u!4 &419951350
 Transform:
   m_ObjectHideFlags: 0
@@ -2351,11 +2360,15 @@ MonoBehaviour:
   playerSpeed: 5
   baseDamage: 5
   invincibilityTime: 0
+  playerMoney: 0
   fishingZoneTag: 
   shopTag: 
   ennemiTag: 
   isOnFishingZone: 0
   isOnShop: 0
+  zoneWhereIam: {fileID: 0}
+  shopManager: {fileID: 0}
+  MenuManager: {fileID: 0}
 --- !u!212 &1591340439
 SpriteRenderer:
   serializedVersion: 3

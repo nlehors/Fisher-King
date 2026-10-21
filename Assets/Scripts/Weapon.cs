@@ -39,7 +39,11 @@ public class Weapon : MonoBehaviour
             {
                 Rotation(angleRotation);
             }
-            CreateProjectile();
+
+            if (canShoot)
+            {
+                CreateProjectile();
+            }
             
             timer = couldown;
         }

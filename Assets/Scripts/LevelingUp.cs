@@ -56,6 +56,7 @@ public class LevelingUp : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+            uiUpgrade.SetActive(false);
         }
     }
 
