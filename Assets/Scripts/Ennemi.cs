@@ -20,7 +20,6 @@ public class Ennemi : MonoBehaviour
     void Update()
     {
         GoThere(gameManager.player.transform.position,ennemiSpeed);
-        Debug.Log(ennemiLife);
     }
 
     void GoThere(Vector3 target, float speed)
@@ -35,8 +34,7 @@ public class Ennemi : MonoBehaviour
     public void Death()
     {
         Instantiate(xpPrefab,transform.position,transform.rotation); //j'ai ajouté un truc pour que ça spawn aux pos de l'ennemi
-        //euh vu que le spawn dans liste ne marche pas encore, je met ce truc en comm
-        //gameManager.NukeMe(this.gameObject);
+        gameManager.NukeMe(this.gameObject);
         Destroy(this.gameObject);
     }
 }

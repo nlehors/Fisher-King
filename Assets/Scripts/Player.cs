@@ -6,24 +6,33 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]public int playerLife;
-    [SerializeField]public float playerSpeed;
-    [SerializeField]public float baseDamage = 5f;
+    public int playerLife;
+    public float playerSpeed;
+    public float baseDamage = 5f;
     
     public float invincibilityTime;
     float invincibilityTimeRemaining;
+
+    public int playerMoney;
 
     InputAction moveLeft = InputSystem.actions.FindAction("MoveLeft");
     InputAction moveRight = InputSystem.actions.FindAction("MoveRight");
     InputAction moveUp = InputSystem.actions.FindAction("MoveUp");
     InputAction moveDown = InputSystem.actions.FindAction("MoveDown");
+    
+    InputAction interaction = InputSystem.actions.FindAction("Interaction");
 
-    public string fishingZoneTag;
-    public string shopTag;
-    public string ennemiTag;
+    public string fishingZoneTag = "Fishing Zone";
+    public string shopTag = "Shop";
+    public string ennemiTag = "Ennemi";
 
     public bool isOnFishingZone;
     public bool isOnShop;
+
+    public Collider2D zoneWhereIam;
+
+    public NewShopManager shopManager;
+    public MenuManager MenuManager;
     
     void Start()
     {
@@ -35,6 +44,11 @@ public class Player : MonoBehaviour
         Mouvement();
 
         invincibilityTimeRemaining -= Time.deltaTime;
+
+        if (playerLife == 0)
+        {
+            MenuManager.ReturnToMenu();
+        }
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -42,10 +56,14 @@ public class Player : MonoBehaviour
         if (other.CompareTag(fishingZoneTag))
         {
             isOnFishingZone = true;
+            
+            zoneWhereIam = other;
         }
         else if (other.CompareTag(shopTag))
         {
             isOnShop = true;
+
+            zoneWhereIam = other;
         }
     }
 
@@ -54,10 +72,14 @@ public class Player : MonoBehaviour
         if (other.CompareTag(fishingZoneTag))
         {
             isOnFishingZone = false;
+            
+            zoneWhereIam = null;
         }
         else if (other.CompareTag(shopTag))
         {
             isOnShop = false;
+            
+            zoneWhereIam = null;
         }
     }
 

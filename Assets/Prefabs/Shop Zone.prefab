@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8538227164277025868}
   - component: {fileID: 2092192923115401139}
   m_Layer: 0
-  m_Name: Fishing Zone 1
+  m_Name: Shop Zone
   m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

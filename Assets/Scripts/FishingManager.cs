@@ -9,9 +9,9 @@ public class FishingManager : MonoBehaviour
     public FishingController fishingController;
     
     [SerializeField] private List<FishData> fishDataList;
-    public GameObject fishingReward;
-    public SpriteRenderer fishingRewardSprite;
-    public TMP_Text fishingRewardText;
+    //public GameObject fishingReward;
+    //public SpriteRenderer fishingRewardSprite;
+    //public TMP_Text fishingRewardText;
     
     void Start()
     {

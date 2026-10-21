@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerLife: 100
   playerSpeed: 5
+  baseDamage: 5
   invincibilityTime: 0
   fishingZoneTag: Fishing Zone
   shopTag: Shop
@@ -552,7 +553,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 409039435}
+  ennemiList: []
   ennemiPrefab: {fileID: 7897076867823202234, guid: 767dafb47a4c2944db484d78375017e6, type: 3}
+  gameTime: 0
+  ennemiKilled: 0
+  numberOfGame: 0
+  numberOfwin: 0
+  volume: 0
+  fishCollection: 
 --- !u!1001 &1876066263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7235729409553201412, guid: 9ea3f8657bd30bc4a83e29123778e841, type: 3}
       propertyPath: m_Name
-      value: Fishing Zone 1
+      value: Shop Zone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

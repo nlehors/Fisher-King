@@ -1,13 +1,13 @@
 using UnityEngine;
 
 using System.Collections.Generic;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject player;
+    public Player player;
 
     public List<GameObject> ennemiList = new List<GameObject>();
-
     public GameObject ennemiPrefab;
     
     //save data
@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     public bool[] fishCollection;
     //end of save data
+
+    public TMP_Text moneyDisplay;
+
+    public int ennemiCap = 10;
     
     void Start()
     {
@@ -28,20 +32,43 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        
+        moneyDisplay.text = "Money : " + player.playerMoney;
+
+        EnnemiSpawnPatern1();
     }
-
-
-
+    
     void SpawnEnnemi(GameObject ennemiPrefab, Vector3 spawnPosition)
     {
         ennemiList.Add(Instantiate(ennemiPrefab, spawnPosition, Quaternion.identity));
         ennemiList[ennemiList.Count-1].transform.SetParent(this.transform);
     }
 
+    void EnnemiSpawnPatern1()
+    {
+        if (ennemiList.Count < ennemiCap)
+        {
+            switch (Random.Range(1,4))
+            {
+                case 1:
+                    SpawnEnnemi(ennemiPrefab,new Vector3(Random.Range(-10,10)+player.transform.position.x,6+player.transform.position.y,0));
+                    break;
+                case 2:
+                    SpawnEnnemi(ennemiPrefab,new Vector3(Random.Range(-10,10)+player.transform.position.x,-6+player.transform.position.y,0));
+                    break;
+                case 3:
+                    SpawnEnnemi(ennemiPrefab,new Vector3(-10+player.transform.position.x, Random.Range(-6,6)+player.transform.position.y,0));
+                    break;
+                case 4:
+                    SpawnEnnemi(ennemiPrefab,new Vector3(10+player.transform.position.x, Random.Range(-6,6)+player.transform.position.y,0));
+                    break;
+            }
+        }
+    }
+
     public void NukeMe(GameObject ennemi)
     {
         ennemiList.Remove(ennemi);
+        ennemiKilled++;
     }
 
     public void ChargeTheGame()
