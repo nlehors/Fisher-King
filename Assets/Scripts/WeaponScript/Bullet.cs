@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     private GameObject nearestEnnemy;
     private float bulletSpeed = 5f;
 
-    
+    private Vector2 dirVector;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,6 +30,10 @@ public class Bullet : MonoBehaviour
         Debug.Log("nearestEnnemy   : " + nearestEnnemy);
       
         Destroy(gameObject,lifeTime);
+        
+        dirVector = new Vector2(nearestEnnemy.transform.position.x - transform.position.x, nearestEnnemy.transform.position.y - transform.position.y);
+
+        dirVector = Vector2.Normalize(dirVector) * bulletSpeed;
     }
 
     // Update is called once per frame
@@ -37,9 +41,7 @@ public class Bullet : MonoBehaviour
     {
         ennemisList = gameManager.GetEnnemiList();
         
-        GoThere(nearestEnnemy.transform.position,bulletSpeed);
-        
-      
+        transform.position += new Vector3(dirVector.x, dirVector.y, 0) * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -59,8 +61,7 @@ public class Bullet : MonoBehaviour
     public GameObject GetNearestEnnemy()
     {
         GameObject tempEnnemy = null;
-        float distanceMinPlayer = 100f; //Vector3.Distance(ennemisList[0].transform.position,player.transform.position);
-      // Debug.Log("ennemi List  : " + ennemisList.Count);
+        float distanceMinPlayer = 100f;
         foreach (GameObject ennemi in ennemisList)
         { 
             
@@ -69,20 +70,15 @@ public class Bullet : MonoBehaviour
                 distanceMinPlayer = Vector3.Distance(ennemi.transform.position, player.transform.position);
               
                 tempEnnemy = ennemi;
-              //  Debug.Log("TEMP  : " + tempEnnemy);
             }
         }
-        Debug.Log("TEMP 2  : " + tempEnnemy);
         return tempEnnemy;
     }
     
     void GoThere(Vector3 target, float speed)
     {
-        Debug.Log(target);
-        Vector2 vector = new Vector2(target.x - transform.position.x, target.y - transform.position.y);
+        
 
-        vector = Vector2.Normalize(vector) * speed * Time.deltaTime;
-
-        this.transform.position += new Vector3(vector.x, vector.y, 0);
+        
     }
 }
