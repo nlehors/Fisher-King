@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float lifeTime = 10;
+    public float lifeTime = 10f;
     
     private GameManager gameManager;
     private Weapon weaponScript;
@@ -24,19 +24,19 @@ public class Bullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         weaponScript = player.GetComponentInChildren<Weapon>();
         GetNearestEnnemy();
+        Destroy(gameObject,lifeTime);
     }
 
     // Update is called once per frame
     void Update()
     {
         ennemisList = gameManager.GetEnnemiList();
+        
         if (nearestEnnemy != null && maxDistanceDetect > 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, nearestEnnemy.transform.position,maxDistanceDetect * Time.deltaTime);
-            
         }
-        
-        Destroy(this,lifeTime);
+      
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +49,7 @@ public class Bullet : MonoBehaviour
             {
                 ennemiScript.Death();
             }
+            Destroy(gameObject);
         }
     }
 
