@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
     [SerializeField]public int angleRotation = 45;
-    [SerializeField]public float couldown = 1f;
+    [SerializeField]public float couldown = 10f;
     [SerializeField]public bool canRotate;
     [SerializeField]public bool canShoot;
 

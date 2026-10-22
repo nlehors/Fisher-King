@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private GameObject player;
     private List<GameObject> ennemisList;
     private GameObject nearestEnnemy;
-    private float maxDistanceDetect;
+    private float bulletSpeed = 5f;
 
     
     
@@ -20,10 +20,15 @@ public class Bullet : MonoBehaviour
     {
         
         gameManager = FindAnyObjectByType<GameManager>();
+        Debug.Log("Game Manager   : " + gameManager);
         ennemisList = gameManager.ennemiList;
+        Debug.Log("Game Manager   : " + ennemisList);
         player = GameObject.FindGameObjectWithTag("Player");
         weaponScript = player.GetComponentInChildren<Weapon>();
-        GetNearestEnnemy();
+        
+        nearestEnnemy = GetNearestEnnemy();
+        Debug.Log("nearestEnnemy   : " + nearestEnnemy);
+      
         Destroy(gameObject,lifeTime);
     }
 
@@ -32,10 +37,8 @@ public class Bullet : MonoBehaviour
     {
         ennemisList = gameManager.GetEnnemiList();
         
-        if (nearestEnnemy != null && maxDistanceDetect > 0)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, nearestEnnemy.transform.position,maxDistanceDetect * Time.deltaTime);
-        }
+        GoThere(nearestEnnemy.transform.position,bulletSpeed);
+        
       
     }
 
@@ -53,19 +56,33 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void GetNearestEnnemy()
+    public GameObject GetNearestEnnemy()
     {
-        float distanceMinPlayer = Vector3.Distance(ennemisList[0].transform.position,player.transform.position);
+        GameObject tempEnnemy = null;
+        float distanceMinPlayer = 100f; //Vector3.Distance(ennemisList[0].transform.position,player.transform.position);
+      // Debug.Log("ennemi List  : " + ennemisList.Count);
         foreach (GameObject ennemi in ennemisList)
-        {
+        { 
+            
             if (Vector3.Distance(ennemi.transform.position,player.transform.position) < distanceMinPlayer)
             {
                 distanceMinPlayer = Vector3.Distance(ennemi.transform.position, player.transform.position);
-                nearestEnnemy = ennemi;
-                maxDistanceDetect = distanceMinPlayer;
+              
+                tempEnnemy = ennemi;
+              //  Debug.Log("TEMP  : " + tempEnnemy);
             }
         }
+        Debug.Log("TEMP 2  : " + tempEnnemy);
+        return tempEnnemy;
     }
     
-    
+    void GoThere(Vector3 target, float speed)
+    {
+        Debug.Log(target);
+        Vector2 vector = new Vector2(target.x - transform.position.x, target.y - transform.position.y);
+
+        vector = Vector2.Normalize(vector) * speed * Time.deltaTime;
+
+        this.transform.position += new Vector3(vector.x, vector.y, 0);
+    }
 }

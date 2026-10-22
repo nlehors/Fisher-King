@@ -813,7 +813,7 @@ MonoBehaviour:
   xpToLevelUp: 10
   xpCount: 0
   uiUpgrade: {fileID: 1159061632}
-  xpBar: {fileID: 1619510719}
+  xpBar: {fileID: 407323307}
 --- !u!1 &472003894
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,7 +3504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   damage: 10
   angleRotation: 45
-  couldown: 1
+  couldown: 2
   canRotate: 0
   canShoot: 1
   prefabToGenerate: {fileID: 6339518754052386969, guid: 4a7ca237b30b15b42ae511d92f0e8341, type: 3}
