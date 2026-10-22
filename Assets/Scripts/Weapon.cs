@@ -75,13 +75,13 @@ public class Weapon : MonoBehaviour
         pos.Rotate(pos.forward,angle); 
     }
 
-    private void Damage(Ennemi target)
+    public void Damage(Ennemi target)
     {
         target.ennemiLife -= totalDamage;
     }
 
     private void CreateProjectile()
     {
-        Instantiate(prefabToGenerate);
+        GameObject lastBullet = Instantiate(prefabToGenerate, transform.position, transform.rotation);
     }
 }

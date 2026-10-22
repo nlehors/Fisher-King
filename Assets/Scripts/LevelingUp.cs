@@ -47,7 +47,7 @@ public class LevelingUp : MonoBehaviour
     void Update()
     {
         xpBar.fillAmount = xpCount / xpToLevelUp;
-        UnityEngine.Debug.Log(xpCount / xpToLevelUp);
+        
         if (canUpgrade)
         {
             Time.timeScale = 0;
