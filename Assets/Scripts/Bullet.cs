@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     public float lifeTime = 10;
     
     private GameManager gameManager;
+    private Weapon weaponScript;
     private GameObject player;
     private List<GameObject> ennemisList;
     private GameObject nearestEnnemy;
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         ennemisList = gameManager.ennemiList;
         player = GameObject.FindGameObjectWithTag("Player");
+        weaponScript = player.GetComponentInChildren<Weapon>();
         GetNearestEnnemy();
     }
 
@@ -37,7 +39,18 @@ public class Bullet : MonoBehaviour
         Destroy(this,lifeTime);
     }
 
-
+    void OnTriggerEnter2D(Collider2D collision)
+    { 
+        if (collision.CompareTag("Ennemi"))
+        {
+            Ennemi ennemiScript = collision.GetComponent<Ennemi>();
+            weaponScript.Damage(ennemiScript);
+            if (ennemiScript.ennemiLife <= 0)
+            {
+                ennemiScript.Death();
+            }
+        }
+    }
 
     public void GetNearestEnnemy()
     {
