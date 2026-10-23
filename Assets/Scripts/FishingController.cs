@@ -33,7 +33,7 @@ public class FishingController : MonoBehaviour
    public void QTE ()
     {
         
-        pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime);
+        pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime*fishingUI.transform.localScale.x);
 
         if (Vector3.Distance(pointerTransform.position, pointA.position) < 0.1f) 
         {
@@ -56,7 +56,7 @@ public class FishingController : MonoBehaviour
                 }
                 
                 fishingUI.SetActive(false);
-                fishingManager.isFishing = false;
+                player.isOnFishingZone = false;
                 Restart();
             }
         }
@@ -65,7 +65,6 @@ public class FishingController : MonoBehaviour
     {
         if (RectTransformUtility.RectangleContainsScreenPoint(safeZones[successCount], pointerTransform.position, null)) 
         {
-            Debug.Log("Success!");
             safeZones[successCount].gameObject.SetActive(false);
             successCount++;
 
@@ -75,14 +74,10 @@ public class FishingController : MonoBehaviour
             }
 
         }
-        else
-        {
-            Debug.Log("Fail!");
-        }
     }
     public void Restart()
     {
-        if (fishingManager.isFishing == false)
+        if (!player.isOnFishingZone)
         {
             qteCount = 0;
             successCount = 0;

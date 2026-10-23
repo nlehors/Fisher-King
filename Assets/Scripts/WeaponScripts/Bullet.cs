@@ -20,14 +20,11 @@ public class Bullet : MonoBehaviour
     {
         
         gameManager = FindAnyObjectByType<GameManager>();
-        Debug.Log("Game Manager   : " + gameManager);
         ennemisList = gameManager.ennemiList;
-        Debug.Log("Game Manager   : " + ennemisList);
         player = GameObject.FindGameObjectWithTag("Player");
         weaponScript = player.GetComponentInChildren<Weapon>();
         
         nearestEnnemy = GetNearestEnnemy();
-        Debug.Log("nearestEnnemy   : " + nearestEnnemy);
       
         Destroy(gameObject,lifeTime);
         
@@ -73,12 +70,5 @@ public class Bullet : MonoBehaviour
             }
         }
         return tempEnnemy;
-    }
-    
-    void GoThere(Vector3 target, float speed)
-    {
-        
-
-        
     }
 }

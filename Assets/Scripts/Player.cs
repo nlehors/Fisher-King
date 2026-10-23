@@ -6,9 +6,26 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public int playerLife;
+    int playerHealth;
+    public float baseDamage = 5f;//à remplacer
+    
+    //stats améliorables
+    [Header("stats améliorables")] 
+    public float playerMaxHealth;
     public float playerSpeed;
-    public float baseDamage = 5f;
+    
+    public float playerDamageModifier;
+    public float playerAttackSpeedModifer;
+    public float playerCritChance;
+    public float playerCritDamage;
+    public float playerAttackAreaSize;
+    public float playerKnockback;
+
+    public float playerRegeneration;
+    public float playerArmor;
+    public float playerEffectDuration;//c'est censé servir à quelque chose askip
+    public float playerLuck;
+    [Space(10f)]
     
     public float invincibilityTime;
     float invincibilityTimeRemaining;
@@ -45,7 +62,7 @@ public class Player : MonoBehaviour
 
         invincibilityTimeRemaining -= Time.deltaTime;
 
-        if (playerLife == 0)
+        if (playerHealth == 0)
         {
             MenuManager.ReturnToMenu();
         }
@@ -89,7 +106,7 @@ public class Player : MonoBehaviour
         {
             if (invincibilityTimeRemaining < 0)
             {
-                playerLife--;
+                playerHealth--;
                 invincibilityTimeRemaining = invincibilityTime;
             }
         }
