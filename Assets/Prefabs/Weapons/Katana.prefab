@@ -102,8 +102,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4298416476166675197}
   - component: {fileID: 5909638410942288716}
-  - component: {fileID: 8666306886025518069}
   - component: {fileID: 2945146303828887249}
+  - component: {fileID: 6274351303070945488}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -173,24 +173,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8666306886025518069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5541977181800788869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c00f115da8144848b712689516843e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 10
-  angleRotation: 100
-  couldown: 1
-  canRotate: 1
-  canShoot: 0
-  prefabToGenerate: {fileID: 6339518754052386969, guid: 4a7ca237b30b15b42ae511d92f0e8341, type: 3}
 --- !u!50 &2945146303828887249
 Rigidbody2D:
   serializedVersion: 5
@@ -218,3 +200,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6274351303070945488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541977181800788869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb2a588a3d2c0144aee89c2e0f8a8c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KatanaScript
+  damage: 10
+  angleRotation: 0
+  couldown: 10
+  canRotate: 0
+  canShoot: 0
+  prefabToGenerate: {fileID: 0}

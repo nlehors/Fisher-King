@@ -907,9 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add29adcd08d2874086f2bc47d124fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  playerHealth: 20
   baseDamage: 5
-  playerMaxHealth: 0
+  playerMaxHealth: 10
   playerSpeed: 5
   playerDamageModifier: 0
   playerAttackSpeedModifer: 0

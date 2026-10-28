@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    int playerHealth;
+    float playerHealth;
     public float baseDamage = 5f;//à remplacer
     
     //stats améliorables
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        
+        playerHealth = playerMaxHealth;
     }
 
     void Update()
