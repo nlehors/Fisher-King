@@ -6,11 +6,10 @@ using UnityEngine;
 public class WeaponParent : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
-    [SerializeField]public float couldown = 10f;
+    [SerializeField]public float cooldown = 10f;
 
     //[SerializeField] public GameObject prefabToGenerate;
     
-    protected Transform pos;
     protected float timer;
     protected Player playerScript;
     protected float totalDamage;
@@ -20,6 +19,7 @@ public class WeaponParent : MonoBehaviour
     void Start()
     {
         Setup();
+        nearestEnnemy = GetNearestEnnemy();
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -39,13 +39,14 @@ public class WeaponParent : MonoBehaviour
     public virtual void Setup()
     {
         playerScript = GetComponentInParent<Player>();
-        timer = couldown;
+        timer = cooldown;
     }
     
     
     
     public GameObject GetNearestEnnemy()
     {
+        //jpp de ce code de con
         GameObject tempEnnemy = null;
         float distanceMinPlayer = 100f;
         foreach (GameObject ennemi in ennemisList)
