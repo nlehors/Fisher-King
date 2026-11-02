@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     float playerHealth;
     public float baseDamage = 5f;//à remplacer
     
-    //stats améliorables
     [Header("stats améliorables")] 
     public float playerMaxHealth;
     public float playerSpeed;
@@ -25,7 +24,7 @@ public class Player : MonoBehaviour
     public float playerArmor;
     public float playerEffectDuration;//c'est censé servir à quelque chose askip
     public float playerLuck;
-    [Space(10f)]
+    [Space(20f)]
     
     public float invincibilityTime;
     float invincibilityTimeRemaining;
@@ -56,7 +55,7 @@ public class Player : MonoBehaviour
         playerHealth = playerMaxHealth;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Mouvement();
 

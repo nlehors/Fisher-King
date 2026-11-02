@@ -7,19 +7,20 @@ public class WeaponParent : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
     [SerializeField]public float cooldown = 10f;
-
+    public GameManager gameManager;
     //[SerializeField] public GameObject prefabToGenerate;
     
-    protected float timer;
+    [SerializeField]protected float timer;
     protected Player playerScript;
     protected float totalDamage;
     protected List<GameObject> ennemisList;
     protected GameObject nearestEnnemy;
+    
 
     void Start()
     {
         Setup();
-        nearestEnnemy = GetNearestEnnemy();
+        GetNearestEnnemy();
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -44,22 +45,22 @@ public class WeaponParent : MonoBehaviour
     
     
     
-    public GameObject GetNearestEnnemy()
+    public void GetNearestEnnemy()
     {
         //jpp de ce code de con
-        GameObject tempEnnemy = null;
+        //GameObject tempEnnemy = null;
         float distanceMinPlayer = 100f;
-        foreach (GameObject ennemi in ennemisList)
+        foreach (GameObject ennemi in gameManager.ennemiList)
         { 
             
             if (Vector3.Distance(ennemi.transform.position,playerScript.transform.position) < distanceMinPlayer)
             {
                 distanceMinPlayer = Vector3.Distance(ennemi.transform.position, playerScript.transform.position);
               
-                tempEnnemy = ennemi;
+                nearestEnnemy = ennemi;
             }
         }
-        return tempEnnemy;
+        
     }
     public void Damage(Ennemi target)
     {
