@@ -153,9 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KatanaScript
   damage: 10
-  cooldown: 3
+  cooldown: 2
+  gameManager: {fileID: 0}
+  timer: 0
   slashDistance: 2
   slashSpeed: 5
+  parent: {fileID: 2971827116015983563}
 --- !u!212 &5133290899327838457
 SpriteRenderer:
   serializedVersion: 3

@@ -3004,7 +3004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   baseDamage: 5
-  playerMaxHealth: 0
+  playerMaxHealth: 10
   playerSpeed: 5
   playerDamageModifier: 0
   playerAttackSpeedModifer: 0
@@ -4154,6 +4154,14 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1502179478}
+    - target: {fileID: 8351769000514731131, guid: 5054185cd26ff7643a547383dc7b63a2, type: 3}
+      propertyPath: cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351769000514731131, guid: 5054185cd26ff7643a547383dc7b63a2, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 419951349}
     - target: {fileID: 8394213247815326615, guid: 5054185cd26ff7643a547383dc7b63a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
