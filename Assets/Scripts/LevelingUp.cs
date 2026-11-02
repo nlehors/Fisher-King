@@ -37,30 +37,61 @@ public class LevelingUp : MonoBehaviour
         canUpgrade = false;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerScript = GetComponent<Player>();
+        uiUpgrade.SetActive(false);
     }
     
-    // Update is called once per frame
     void Update()
     {
         xpBar.fillAmount = xpCount / xpToLevelUp;
         
+        //if (canUpgrade)
+        //{
+        //    Time.timeScale = 0;
+        //    uiUpgrade.SetActive(true);
+        //}
+        //else
+        //{
+        //    Time.timeScale = 1;
+        //    uiUpgrade.SetActive(false);
+        //}
+
         if (canUpgrade)
         {
-            Time.timeScale = 0;
-            uiUpgrade.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = 1;
-            uiUpgrade.SetActive(false);
+            UpgradeMenuActivation();
+            canUpgrade = false;
         }
     }
 
+    void UpgradeMenuActivation()
+    {
+        Time.timeScale = 0;
+        uiUpgrade.SetActive(true);
+    }
 
-
-
+    void UpgradeMenuDesactivation()
+    {
+        Time.timeScale = 1;
+        uiUpgrade.SetActive(false);
+    }
+    
+    public void Button1()
+    {
+        UpgradeMenuDesactivation();
+        UpgradeSpeed();
+    }
+    
+    public void Button2()
+    {
+        UpgradeMenuDesactivation();
+        UpgradeSpeed();
+    }
+    
+    public void Button3()
+    {
+        UpgradeMenuDesactivation();
+        UpgradeSpeed();
+    }
 }

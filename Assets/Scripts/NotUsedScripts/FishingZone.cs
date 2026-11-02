@@ -10,7 +10,7 @@ public class FishingZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
                 
-            fishingManager.isFishing = true;
+            //fishingManager.isFishing = true;
 
         }
     }
@@ -19,7 +19,7 @@ public class FishingZone : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            fishingManager.isFishing = false;
+            //fishingManager.isFishing = false;
         }
     }
     

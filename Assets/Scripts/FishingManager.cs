@@ -5,31 +5,25 @@ using UnityEngine;
 public class FishingManager : MonoBehaviour
 {
     public GameObject fishingUI;
-    public bool isFishing;
+    public bool isnoyFishing;
     public FishingController fishingController;
     
     [SerializeField] private List<FishData> fishDataList;
     //public GameObject fishingReward;
     //public SpriteRenderer fishingRewardSprite;
     //public TMP_Text fishingRewardText;
-    
-    void Start()
-    {
-        isFishing = false;
-    }
+
+    public Player player;
 
     void Update()
     {
-        if (isFishing == true)
+        fishingUI.SetActive(player.isOnFishingZone);
+        if (player.isOnFishingZone)
         {
-            isFishing = true;
-            fishingUI.SetActive(true);
             fishingController.QTE();
         }
-
-        if (isFishing==false)
+        else
         {
-            fishingUI.SetActive(false);
             fishingController.Restart();
         }
     }

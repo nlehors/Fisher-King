@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class NewShopManager : MonoBehaviour
 {
@@ -9,35 +10,28 @@ public class NewShopManager : MonoBehaviour
     public GameObject openShopUI;
 
     public Player Player;
-    
-    //public List<GameObject> shopList = new List<GameObject>();
 
     public bool shopActive;
     GameObject activeShop;
     
     InputAction interaction = InputSystem.actions.FindAction("Interaction");
 
-    public int stupidBuffer;
+    public float inputBuffer;
     
     void Start()
     {
         shopUI.SetActive(false);
-        
-        //for (int i = 0; i < transform.childCount; i++)
-        //{
-        //    shopList.Add(transform.GetChild(i).gameObject);
-        //}
     }
     
     void Update()
     {
-        stupidBuffer++;
-        if (shopActive && stupidBuffer > 200 && interaction.WasPerformedThisFrame())
-        {
-            Player.playerMoney--;
-            Player.playerSpeed+=10;
-            ShopDeactivate();
-        }
+        //inputBuffer += Time.unscaledDeltaTime;
+        //if (shopActive && inputBuffer > 2 && interaction.WasPerformedThisFrame())
+        //{
+        //    Player.playerMoney--;
+        //    Player.playerSpeed+=10;
+        //    ShopDeactivate();
+        //}
 
         if (shopActive)
         {
@@ -61,7 +55,7 @@ public class NewShopManager : MonoBehaviour
         Time.timeScale = 0;
         shopUI.SetActive(true);
         shopActive = true;
-        stupidBuffer = 0;
+        inputBuffer = 0;
         activeShop = shop;
     }
     
@@ -76,6 +70,21 @@ public class NewShopManager : MonoBehaviour
         activeShop = null;
 
         Player.isOnShop = false;
+    }
+
+    public void Button1()
+    {
+        ShopDeactivate();
+    }
+    
+    public void Button2()
+    {
+        ShopDeactivate();
+    }
+    
+    public void Button3()
+    {
+        ShopDeactivate();
     }
 }
 

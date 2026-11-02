@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
-    [SerializeField]public int angleRotation = 45;
+    [SerializeField]public float angleRotation = 0;
     [SerializeField]public float couldown = 10f;
     [SerializeField]public bool canRotate;
     [SerializeField]public bool canShoot;
@@ -35,11 +35,6 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            if (canRotate)
-            {
-                Rotation(angleRotation);
-            }
-
             if (canShoot)
             {
                 CreateProjectile();
@@ -47,12 +42,11 @@ public class Weapon : MonoBehaviour
             
             timer = couldown;
         }
-
-        if (pos.rotation.eulerAngles.z > angleRotation)
-        {
-            pos.rotation = temp;
-        }
         
+        if (canRotate)
+        {
+            Rotation(angleRotation * Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
