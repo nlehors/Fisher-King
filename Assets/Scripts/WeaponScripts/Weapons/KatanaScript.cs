@@ -1,6 +1,5 @@
 using System;
 using Unity.Cinemachine;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class KatanaScript : WeaponParent
@@ -15,24 +14,22 @@ public class KatanaScript : WeaponParent
     private Vector3 tempPos;
     private Collider2D collider;
     private SpriteRenderer sprite;
+    private bool isSlashing = false;
+    
     private void Update()
     {
-        Debug.Log(dirNearestEnnemy);
-        if (timer > 0)
-        {
-            collider.enabled = false;
-            sprite.enabled = false;
-            timer -= Time.deltaTime;
-        }
-        else
+        Debug.Log(collider.enabled);
+        if (timer <= 0 && isSlashing == false)
         {
             collider.enabled = true;
             sprite.enabled = true;
             Slash();
         }
+        timer -= Time.deltaTime;
         
-        dirNearestEnnemy = GetAngleNearestEnnemy();
-        nearestEnnemy = GetNearestEnnemy();
+        
+        GetNearestEnnemy();
+        Orientate(nearestEnnemy.transform);
     }
 
     public override void Setup()
@@ -42,10 +39,13 @@ public class KatanaScript : WeaponParent
         tempPos = transform.localPosition;
         collider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        collider.enabled = false;
+        sprite.enabled = false;
     }
 
     private void Slash()
     {
+        isSlashing = true;
         if (slashDistance > 0)
         {
             Vector3 temp = transform.localPosition;
@@ -58,17 +58,13 @@ public class KatanaScript : WeaponParent
             slashDistance = tempDistance;
             transform.localPosition = tempPos;
             timer = cooldown;
+            collider.enabled = false;
+            sprite.enabled = false;
         }
     }
 
-    private Vector3 GetAngleNearestEnnemy()
+    private void Orientate(Transform target)
     {
-        var temp = parent.transform.rotation.eulerAngles;
-        temp.z = (nearestEnnemy.transform.position - parent.transform.position).z;
-        var rotation = parent.transform.rotation;
-        rotation.eulerAngles = temp;
-        parent.transform.rotation = rotation;
-        
-        return temp;
+        transform.LookAt(target);
     }
 }

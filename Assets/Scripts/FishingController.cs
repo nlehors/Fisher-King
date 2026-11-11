@@ -17,6 +17,8 @@ public class FishingController : MonoBehaviour
     
     public Player player;
     
+    InputAction interaction = InputSystem.actions.FindAction("Interaction");
+    
     void Start()
     {
         pointerTransform = GetComponent<RectTransform>();
@@ -44,7 +46,7 @@ public class FishingController : MonoBehaviour
             targetPosition = pointA.position;
         }
        
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (interaction.WasReleasedThisDynamicUpdate())
         {
             CheckSuccess();
             qteCount++;

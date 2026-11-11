@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private GameObject player;
     private List<GameObject> ennemisList;
     private GameObject nearestEnnemy;
-    private float bulletSpeed = 5f;
+    private float bulletSpeed = 1f;
 
     private Vector2 dirVector;
     
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         
         dirVector = new Vector2(nearestEnnemy.transform.position.x - transform.position.x, nearestEnnemy.transform.position.y - transform.position.y);
 
-        dirVector = Vector2.Normalize(dirVector) * bulletSpeed;
+        dirVector = Vector2.Normalize(dirVector) * bulletSpeed * player.GetComponent<Player>().playerSpeed;
     }
 
     // Update is called once per frame
