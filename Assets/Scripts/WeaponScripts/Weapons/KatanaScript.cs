@@ -18,18 +18,19 @@ public class KatanaScript : WeaponParent
     
     private void Update()
     {
-        Debug.Log(collider.enabled);
-        if (timer <= 0 && isSlashing == false)
+        //Debug.Log(collider.enabled);
+        if (timer <= 0)
         {
-            collider.enabled = true;
-            sprite.enabled = true;
             Slash();
         }
         timer -= Time.deltaTime;
         
+        if (isSlashing == false)
+        {
+            GetNearestEnnemy();
+            Orientate(nearestEnnemy.transform);
+        }
         
-        GetNearestEnnemy();
-        Orientate(nearestEnnemy.transform);
     }
 
     public override void Setup()
@@ -45,6 +46,8 @@ public class KatanaScript : WeaponParent
 
     private void Slash()
     {
+        collider.enabled = true;
+        sprite.enabled = true;
         isSlashing = true;
         if (slashDistance > 0)
         {
@@ -52,6 +55,7 @@ public class KatanaScript : WeaponParent
             temp.x -= slashSpeed * Time.deltaTime;
             transform.localPosition = temp;
             slashDistance -= slashSpeed * Time.deltaTime;
+            Debug.Log(slashDistance);
         }
         else
         {
@@ -60,11 +64,12 @@ public class KatanaScript : WeaponParent
             timer = cooldown;
             collider.enabled = false;
             sprite.enabled = false;
+            isSlashing = false;
         }
     }
 
     private void Orientate(Transform target)
     {
-        transform.LookAt(target);
+        transform.LookAt(target.forward);
     }
 }

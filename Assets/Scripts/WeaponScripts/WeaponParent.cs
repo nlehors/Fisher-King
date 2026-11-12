@@ -11,6 +11,7 @@ public class WeaponParent : MonoBehaviour
     //[SerializeField] public GameObject prefabToGenerate;
     
     [SerializeField]protected float timer;
+    [SerializeField]protected float IndexLvl;
     protected Player playerScript;
     protected float totalDamage;
     protected List<GameObject> ennemisList;
