@@ -484,6 +484,88 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1101, y: 619}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &307189155
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 409039437}
+    m_Modifications:
+    - target: {fileID: 1744181972576911372, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 346315452}
+    - target: {fileID: 2754542988430843399, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 346315452}
+    - target: {fileID: 5914618284103424891, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 346315452}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488953526824318416, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: m_Name
+      value: Cutlass(Legendary)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765974285995414242, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 346315452}
+    - target: {fileID: 8843961474472193628, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 346315452}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+--- !u!4 &307189156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6264162631163436060, guid: 19da4cac55374c440a6f319b592071be, type: 3}
+  m_PrefabInstance: {fileID: 307189155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &346315450
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +1044,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 307189156}
   - {fileID: 57316281}
   - {fileID: 865754003}
   - {fileID: 1330935494}
