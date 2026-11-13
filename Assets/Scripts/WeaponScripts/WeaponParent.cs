@@ -7,20 +7,29 @@ public class WeaponParent : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
     [SerializeField]public float cooldown = 10f;
+    [SerializeField] public float durationEffect = 3;
     public GameManager gameManager;
     //[SerializeField] public GameObject prefabToGenerate;
     
     [SerializeField]protected float timer;
+    protected float tempDuration;
     [SerializeField]protected float IndexLvl;
-    protected Player playerScript;
     protected float totalDamage;
+    
+    [HideInInspector]public bool isActive = false;
+    
+    protected Player playerScript;
     protected List<GameObject> ennemisList;
     protected GameObject nearestEnnemy;
+    protected Collider2D collider;
+    protected SpriteRenderer sprite;
     
 
+    
     void Start()
     {
         Setup();
+        
         GetNearestEnnemy();
     }
     
@@ -42,6 +51,11 @@ public class WeaponParent : MonoBehaviour
     {
         playerScript = GetComponentInParent<Player>();
         timer = cooldown;
+        tempDuration = durationEffect;
+        collider = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        collider.enabled = false;
+        sprite.enabled = false;
     }
     
     
@@ -67,6 +81,25 @@ public class WeaponParent : MonoBehaviour
     {
         totalDamage = damage + playerScript.baseDamage;
         target.ennemiLife -= totalDamage;
+    }
+    
+    public void Orientate(Transform target)
+    {
+        transform.LookAt(target.forward);
+    }
+
+    public void ActivateHitbox()
+    {
+        isActive = true;
+        collider.enabled = true;
+        sprite.enabled = true;
+    }
+    
+    public void DesactivateHitbox()
+    {
+        isActive = false;
+        collider.enabled = false;
+        sprite.enabled = false;
     }
     
     

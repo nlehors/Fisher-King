@@ -8,13 +8,8 @@ public class KatanaScript : WeaponParent
     public float slashSpeed;
     [SerializeField] private GameObject parent;
 
-    private Vector3 dirNearestEnnemy;
-        
     private float tempDistance;
     private Vector3 tempPos;
-    private Collider2D collider;
-    private SpriteRenderer sprite;
-    private bool isSlashing = false;
     
     private void Update()
     {
@@ -25,7 +20,7 @@ public class KatanaScript : WeaponParent
         }
         timer -= Time.deltaTime;
         
-        if (isSlashing == false)
+        if (isActive == false)
         {
             GetNearestEnnemy();
             Orientate(nearestEnnemy.transform);
@@ -38,17 +33,11 @@ public class KatanaScript : WeaponParent
         base.Setup();
         tempDistance = slashDistance;
         tempPos = transform.localPosition;
-        collider = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        collider.enabled = false;
-        sprite.enabled = false;
     }
 
     private void Slash()
     {
-        collider.enabled = true;
-        sprite.enabled = true;
-        isSlashing = true;
+        ActivateHitbox();
         if (slashDistance > 0)
         {
             Vector3 temp = transform.localPosition;
@@ -62,14 +51,8 @@ public class KatanaScript : WeaponParent
             slashDistance = tempDistance;
             transform.localPosition = tempPos;
             timer = cooldown;
-            collider.enabled = false;
-            sprite.enabled = false;
-            isSlashing = false;
+            DesactivateHitbox();
         }
     }
-
-    private void Orientate(Transform target)
-    {
-        transform.LookAt(target.forward);
-    }
+    
 }
