@@ -15,8 +15,6 @@ public class NewShopManager : MonoBehaviour
     GameObject activeShop;
     
     InputAction interaction = InputSystem.actions.FindAction("Interaction");
-
-    public float inputBuffer;
     
     void Start()
     {
@@ -25,14 +23,6 @@ public class NewShopManager : MonoBehaviour
     
     void Update()
     {
-        //inputBuffer += Time.unscaledDeltaTime;
-        //if (shopActive && inputBuffer > 2 && interaction.WasPerformedThisFrame())
-        //{
-        //    Player.playerMoney--;
-        //    Player.playerSpeed+=10;
-        //    ShopDeactivate();
-        //}
-
         if (shopActive)
         {
             openShopUI.SetActive(false);
@@ -55,7 +45,6 @@ public class NewShopManager : MonoBehaviour
         Time.timeScale = 0;
         shopUI.SetActive(true);
         shopActive = true;
-        inputBuffer = 0;
         activeShop = shop;
     }
     
