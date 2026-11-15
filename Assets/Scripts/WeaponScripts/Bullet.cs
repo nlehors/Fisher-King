@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ennemisList = gameManager.GetEnnemiList();
+        ennemisList = gameManager.ennemiList;
         
         transform.position += new Vector3(dirVector.x, dirVector.y, 0) * Time.deltaTime;
     }

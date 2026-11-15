@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> ennemiList = new List<GameObject>();
     public GameObject ennemiPrefab;
+    public GameObject BossEnnemiPrefab;
     
-    //save data
+    [Header("save data")] //save data
     public float gameTime;
     public int ennemiKilled;
     public int numberOfGame;
@@ -19,28 +20,52 @@ public class GameManager : MonoBehaviour
     public float volume;
 
     public bool[] fishCollection;
-    //end of save data
+    [Space(20f)] //end of save data
 
     public TMP_Text moneyDisplay;
 
     public int ennemiCap = 10;
+
+    public int numberOfEnnemiKilled;
+    public int numberOfEnnemiToKill;
+    public bool isBossKilled;
+    bool isBossAlive;
+    
+    [SerializeField] GameObject uiWin;
     
     void Start()
     {
-        
+        uiWin.SetActive(false);
     }
     
     void Update()
     {
         moneyDisplay.text = "Money : " + player.playerMoney;
 
-        EnnemiSpawnPatern1();
+        if (numberOfEnnemiToKill <= numberOfEnnemiKilled)
+        {
+            if (!isBossAlive)
+            {
+                SpawnEnnemi(BossEnnemiPrefab,new Vector3());
+                isBossAlive = true;
+            }
+        }
+        else
+        {
+            EnnemiSpawnPatern1();
+        }
+
+        if (isBossKilled)
+        {
+            Time.timeScale = 0;
+            uiWin.SetActive(true);
+        }
     }
     
     void SpawnEnnemi(GameObject ennemiPrefab, Vector3 spawnPosition)
     {
         ennemiList.Add(Instantiate(ennemiPrefab, spawnPosition, Quaternion.identity));
-        ennemiList[ennemiList.Count-1].transform.SetParent(this.transform);
+        ennemiList[ennemiList.Count-1].transform.SetParent(transform);
     }
 
     void EnnemiSpawnPatern1()
@@ -94,12 +119,6 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.DestroySave();
     }
-
-    public List<GameObject> GetEnnemiList()
-    {
-        return ennemiList;
-    }
-    
 }
 
 //[Verse 1]
