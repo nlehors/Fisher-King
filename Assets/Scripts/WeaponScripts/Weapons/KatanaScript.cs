@@ -6,10 +6,10 @@ public class KatanaScript : WeaponParent
 {
     public float slashDistance;
     public float slashSpeed;
-    [SerializeField] private GameObject parent;
-
+    
     private float tempDistance;
     private Vector3 tempPos;
+    
     
     private void Update()
     {
@@ -33,6 +33,7 @@ public class KatanaScript : WeaponParent
         base.Setup();
         tempDistance = slashDistance;
         tempPos = transform.localPosition;
+        
     }
 
     private void Slash()
@@ -40,11 +41,11 @@ public class KatanaScript : WeaponParent
         ActivateHitbox();
         if (slashDistance > 0)
         {
-            Vector3 temp = transform.localPosition;
-            temp.x -= slashSpeed * Time.deltaTime;
-            transform.localPosition = temp;
+            tempPos = transform.localPosition;
+            tempPos.x -= slashSpeed * Time.deltaTime;
+            transform.localPosition = tempPos;
             slashDistance -= slashSpeed * Time.deltaTime;
-            Debug.Log(slashDistance);
+            //Debug.Log(slashDistance);
         }
         else
         {

@@ -8,7 +8,7 @@ public class WeaponParent : MonoBehaviour
     [SerializeField]public float damage = 10f;
     [SerializeField]public float cooldown = 10f;
     [SerializeField] public float durationEffect = 3;
-    public GameManager gameManager;
+    
     //[SerializeField] public GameObject prefabToGenerate;
     
     [SerializeField]protected float timer;
@@ -18,11 +18,14 @@ public class WeaponParent : MonoBehaviour
     
     [HideInInspector]public bool isActive = false;
     
+    [SerializeField]protected GameObject parent;
+    
     protected Player playerScript;
     protected List<GameObject> ennemisList;
     protected GameObject nearestEnnemy;
     protected Collider2D collider;
     protected SpriteRenderer sprite;
+    [HideInInspector]public GameManager gameManager;
     
 
     
@@ -49,6 +52,7 @@ public class WeaponParent : MonoBehaviour
     // fonction globales :
     public virtual void Setup()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
         playerScript = GetComponentInParent<Player>();
         timer = cooldown;
         tempDuration = durationEffect;
@@ -85,8 +89,9 @@ public class WeaponParent : MonoBehaviour
     
     public void Orientate(Transform target)
     {
-        transform.LookAt(target.forward);
+        parent.transform.LookAt(target.up);
     }
+    
 
     public void ActivateHitbox()
     {

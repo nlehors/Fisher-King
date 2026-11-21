@@ -10,7 +10,7 @@ public class CutlassScript : WeaponParent
     public bool isStabbing = false;
     
     [SerializeField] private bool canStab;
-    [SerializeField] private GameObject parent;
+    
     
 
     private float tempStabDuration;
@@ -20,7 +20,7 @@ public class CutlassScript : WeaponParent
     
     private void FixedUpdate()
     {
-        if ( tempDuration > 0)
+        if (tempDuration > 0)
         {
             timer = cooldown;
             if (!isActive)
