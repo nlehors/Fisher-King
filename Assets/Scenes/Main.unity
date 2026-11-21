@@ -1148,26 +1148,13 @@ MonoBehaviour:
   - key: playerKnockback
     value: 0
   - key: playerRegeneration
-    value: 0
+    value: 1
   - key: playerArmor
     value: 0
   - key: playerEffectDuration
     value: 0
   - key: playerLuck
     value: 0
-  uprgradeButtonTextList:
-  - max Health
-  - player speed
-  - damage modifier
-  - attack speed modifier
-  - crit chance
-  - crit damage
-  - attack area size
-  - knockback
-  - regeneration
-  - armor
-  - effect duration
-  - luck
   upgradeNames:
   - playerMaxHealth
   - playerSpeed
@@ -1181,7 +1168,22 @@ MonoBehaviour:
   - playerArmor
   - playerEffectDuration
   - playerLuck
-  invincibilityTime: 0
+  uprgradeButtonTextList:
+  - max Health
+  - player speed
+  - damage modifier
+  - attack speed modifier
+  - crit chance
+  - crit damage
+  - attack area size
+  - knockback
+  - regeneration
+  - armor
+  - effect duration
+  - luck
+  invincibilityTime: 0.1
+  regenTime: 1
+  regenTimeRemaining: 0
   playerMoney: 10
   fishingZoneTag: Fishing Zone
   shopTag: Shop
@@ -6733,6 +6735,34 @@ MonoBehaviour:
   openShopUI: {fileID: 1259097514}
   Player: {fileID: 409039438}
   shopActive: 0
+  button1: {fileID: 477253106}
+  button2: {fileID: 1919484129}
+  button3: {fileID: 967935118}
+  WeaponsDictionary:
+  - key: katana
+    value: 0
+  - key: harpoonGun
+    value: 0
+  - key: dynamite
+    value: 0
+  - key: fishingNet
+    value: 0
+  - key: molotov
+    value: 0
+  - key: flintlock
+    value: 0
+  - key: cutlass
+    value: 0
+  - key: canon
+    value: 0
+  - key: turret
+    value: 0
+  - key: torpedo
+    value: 0
+  - key: seaMine
+    value: 0
+  - key: propeller
+    value: 0
 --- !u!1 &2098962782
 GameObject:
   m_ObjectHideFlags: 0

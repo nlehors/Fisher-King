@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     float playerHealth;
-    public float baseDamage = 5f;//à remplacer
+    public float baseDamage = 5;//à remplacer
     
     //stats améliorables
     //[Header("stats améliorables")] 
@@ -45,22 +45,6 @@ public class Player : MonoBehaviour
         { "playerLuck", 0 }
     };//si vous changez les noms de ça le jeu explose
     
-    public List<string> uprgradeButtonTextList = new List<string>
-    {
-        "max Health",
-        "player speed",
-        "damage modifier",
-        "attack speed modifier",
-        "crit chance",
-        "crit damage",
-        "attack area size",
-        "knockback",
-        "regeneration",
-        "armor",
-        "effect duration",
-        "luck"
-    };
-    
     public List<string> upgradeNames = new List<string>
     {
         "playerMaxHealth",
@@ -77,8 +61,27 @@ public class Player : MonoBehaviour
         "playerLuck"
     };
     
+    public List<string> uprgradeButtonTextList = new List<string>
+    {
+        "max Health",
+        "player speed",
+        "damage modifier",
+        "attack speed modifier",
+        "crit chance",
+        "crit damage",
+        "attack area size",
+        "knockback",
+        "regeneration",
+        "armor",
+        "effect duration",
+        "luck"
+    };
+    
     public float invincibilityTime;
     float invincibilityTimeRemaining;
+
+    public float regenTime;
+    public float regenTimeRemaining;
 
     public int playerMoney;
 
@@ -115,6 +118,14 @@ public class Player : MonoBehaviour
         if (playerHealth == 0)
         {
             MenuManager.ReturnToMenu();
+        }
+
+        regenTimeRemaining -= Time.deltaTime;
+        if (regenTimeRemaining < 0 && playerHealth < playerStatsDictionary["playerMaxHealth"])
+        {
+            playerHealth += playerStatsDictionary["playerRegeneration"];
+            
+            regenTimeRemaining = regenTime;
         }
     }
     
