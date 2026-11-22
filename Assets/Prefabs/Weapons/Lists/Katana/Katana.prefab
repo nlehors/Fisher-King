@@ -153,12 +153,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KatanaScript
   damage: 10
-  cooldown: 2
-  gameManager: {fileID: 0}
+  cooldown: 3
+  durationEffect: 0.5
   timer: 0
-  slashDistance: 2
-  slashSpeed: 5
+  isActive: 0
   parent: {fileID: 2971827116015983563}
+  gameManager: {fileID: 0}
+  slashSpeed: 5
+  slashDistance: 2
+  isBackSword: 0
 --- !u!212 &5133290899327838457
 SpriteRenderer:
   serializedVersion: 3

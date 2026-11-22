@@ -68,7 +68,7 @@ public class WeaponParent : MonoBehaviour
     {
         //jpp de ce code de con
         //GameObject tempEnnemy = null;
-        float distanceMinPlayer = 100f;
+        float distanceMinPlayer = 10000000000f;
         foreach (GameObject ennemi in gameManager.ennemiList)
         { 
             
@@ -89,7 +89,11 @@ public class WeaponParent : MonoBehaviour
     
     public void Orientate(Transform target)
     {
-        parent.transform.LookAt(target.up);
+        Vector2 dirNearestEnnemy = target.position - parent.transform.position;
+        if (dirNearestEnnemy != Vector2.zero)
+        {
+            parent.transform.up = dirNearestEnnemy;
+        }
     }
     
 

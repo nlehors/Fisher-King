@@ -6,14 +6,19 @@ public class KatanaScript : WeaponParent
 {
     public float slashSpeed;
     public float slashDistance;
-    
+    public bool isBackSword;
+    public bool canBackNForth;
+
+    private bool hasGoBack = false;
     private Vector3 tempPos;
     private float tempDis;
+    private float tempDisBack;
     private Vector3 originPos;
+    
 
     private void FixedUpdate()
     {
-        Debug.Log(tempDis);
+        //Debug.Log("");
         if (tempDuration > 0)
         {
             timer = cooldown;
@@ -23,10 +28,14 @@ public class KatanaScript : WeaponParent
                 GetNearestEnnemy();
                 if (nearestEnnemy != null)
                 {
-                    //Orientate(nearestEnnemy.transform);
+                    Orientate(nearestEnnemy.transform);
                 }
             }
             Slash();
+            if (canBackNForth && tempDis > slashDistance)
+            {
+                BackSlash();
+            }
             tempDuration -= Time.deltaTime;
         }
         else
@@ -36,8 +45,9 @@ public class KatanaScript : WeaponParent
                 DesactivateHitbox();
                 //reset
                 transform.localPosition = originPos;
+                parent.transform.localEulerAngles = new Vector3();
                 tempDis = 0;
-
+                tempDisBack = 0;
             }
             timer -= Time.deltaTime;
         }
@@ -47,30 +57,14 @@ public class KatanaScript : WeaponParent
             tempDuration = durationEffect;
         }
     }
-
-    //private void Update()
-    //{
-    //    //Debug.Log(collider.enabled);
-    //    if (timer <= 0)
-    //    {
-    //        Slash();
-    //    }
-    //    timer -= Time.deltaTime;
-    //    
-    //    if (isActive == false)
-    //    {
-    //        GetNearestEnnemy();
-    //        Orientate(nearestEnnemy.transform);
-    //    }
-    //    
-    //}
-
+    
     public override void Setup()
     {
         base.Setup();
         tempPos = transform.localPosition;
         originPos = transform.localPosition;
         tempDis = 0;
+        tempDisBack = 0;
 
     }
 
@@ -78,10 +72,39 @@ public class KatanaScript : WeaponParent
     {
         if (tempDis <= slashDistance)
         {
-            tempPos = transform.localPosition;
-            tempPos.x -= slashSpeed * Time.deltaTime;
-            transform.localPosition = tempPos;
+            if (!isBackSword)
+            {
+                tempPos = transform.localPosition;
+                tempPos.x -= slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            else
+            {
+                tempPos = transform.localPosition;
+                tempPos.x += slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
             tempDis += slashSpeed * Time.deltaTime;
+        }
+    }
+
+    private void BackSlash()
+    {
+        if (tempDisBack <= slashDistance)
+        {
+            if (!isBackSword)
+            {
+                tempPos = transform.localPosition;
+                tempPos.x += slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            else
+            {
+                tempPos = transform.localPosition;
+                tempPos.x -= slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            tempDisBack += slashSpeed * Time.deltaTime;
         }
     }
     
