@@ -9,7 +9,7 @@ public class Ennemi : MonoBehaviour
 
     public GameObject xpPrefab;
     
-    GameManager gameManager;
+    public GameManager gameManager;
     
     void Start()
     {
@@ -30,10 +30,12 @@ public class Ennemi : MonoBehaviour
         transform.position += new Vector3(vector.x, vector.y, 0);
     }
 
-    public void Death()
+    public virtual void Death()
     {
+        gameManager.numberOfEnnemiKilled++;
+        
         Instantiate(xpPrefab,transform.position,transform.rotation); //j'ai ajouté un truc pour que ça spawn aux pos de l'ennemi
-        gameManager.NukeMe(this.gameObject);
-        Destroy(this.gameObject);
+        gameManager.NukeMe(gameObject);
+        Destroy(gameObject);
     }
 }

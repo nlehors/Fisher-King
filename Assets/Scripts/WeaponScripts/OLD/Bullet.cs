@@ -30,13 +30,13 @@ public class Bullet : MonoBehaviour
         
         dirVector = new Vector2(nearestEnnemy.transform.position.x - transform.position.x, nearestEnnemy.transform.position.y - transform.position.y);
 
-        dirVector = Vector2.Normalize(dirVector) * bulletSpeed * player.GetComponent<Player>().playerSpeed;
+        dirVector = Vector2.Normalize(dirVector) * bulletSpeed * player.GetComponent<Player>().playerStatsDictionary["playerSpeed"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        ennemisList = gameManager.GetEnnemiList();
+        ennemisList = gameManager.ennemiList;
         
         transform.position += new Vector3(dirVector.x, dirVector.y, 0) * Time.deltaTime;
     }

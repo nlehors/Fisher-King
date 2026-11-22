@@ -7,19 +7,32 @@ public class WeaponParent : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
     [SerializeField]public float cooldown = 10f;
-    public GameManager gameManager;
+    [SerializeField] public float durationEffect = 3;
+    
     //[SerializeField] public GameObject prefabToGenerate;
     
     [SerializeField]protected float timer;
-    protected Player playerScript;
+    protected float tempDuration;
+    //[SerializeField]protected float IndexLvl;
     protected float totalDamage;
+    
+    [HideInInspector]public bool isActive = false;
+    
+    [SerializeField]protected GameObject parent;
+    
+    protected Player playerScript;
     protected List<GameObject> ennemisList;
     protected GameObject nearestEnnemy;
+    protected Collider2D collider;
+    protected SpriteRenderer sprite;
+    [HideInInspector]public GameManager gameManager;
     
 
+    
     void Start()
     {
         Setup();
+        
         GetNearestEnnemy();
     }
     
@@ -39,8 +52,14 @@ public class WeaponParent : MonoBehaviour
     // fonction globales :
     public virtual void Setup()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
         playerScript = GetComponentInParent<Player>();
         timer = cooldown;
+        tempDuration = durationEffect;
+        collider = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        collider.enabled = false;
+        sprite.enabled = false;
     }
     
     
@@ -49,7 +68,7 @@ public class WeaponParent : MonoBehaviour
     {
         //jpp de ce code de con
         //GameObject tempEnnemy = null;
-        float distanceMinPlayer = 100f;
+        float distanceMinPlayer = 10000000000f;
         foreach (GameObject ennemi in gameManager.ennemiList)
         { 
             
@@ -66,6 +85,30 @@ public class WeaponParent : MonoBehaviour
     {
         totalDamage = damage + playerScript.baseDamage;
         target.ennemiLife -= totalDamage;
+    }
+    
+    public void Orientate(Transform target)
+    {
+        Vector2 dirNearestEnnemy = target.position - parent.transform.position;
+        if (dirNearestEnnemy != Vector2.zero)
+        {
+            parent.transform.up = dirNearestEnnemy;
+        }
+    }
+    
+
+    public void ActivateHitbox()
+    {
+        isActive = true;
+        collider.enabled = true;
+        sprite.enabled = true;
+    }
+    
+    public void DesactivateHitbox()
+    {
+        isActive = false;
+        collider.enabled = false;
+        sprite.enabled = false;
     }
     
     
