@@ -4,67 +4,108 @@ using UnityEngine;
 
 public class KatanaScript : WeaponParent
 {
-    public float slashDistance;
     public float slashSpeed;
-    [SerializeField] private GameObject parent;
+    public float slashDistance;
+    public bool isBackSword;
+    public bool canBackNForth;
 
-    private Vector3 dirNearestEnnemy;
-        
-    private float tempDistance;
+    private bool hasGoBack = false;
     private Vector3 tempPos;
-    private Collider2D collider;
-    private SpriteRenderer sprite;
-    private bool isSlashing = false;
+    private float tempDis;
+    private float tempDisBack;
+    private Vector3 originPos;
     
-    private void Update()
-    {
-        Debug.Log(collider.enabled);
-        if (timer <= 0 && isSlashing == false)
-        {
-            collider.enabled = true;
-            sprite.enabled = true;
-            Slash();
-        }
-        timer -= Time.deltaTime;
-        
-        
-        GetNearestEnnemy();
-        Orientate(nearestEnnemy.transform);
-    }
 
+    private void FixedUpdate()
+    {
+        //Debug.Log("");
+        if (tempDuration > 0)
+        {
+            timer = cooldown;
+            if (!isActive)
+            {
+                ActivateHitbox();
+                GetNearestEnnemy();
+                if (nearestEnnemy != null)
+                {
+                    Orientate(nearestEnnemy.transform);
+                }
+            }
+            Slash();
+            if (canBackNForth && tempDis > slashDistance)
+            {
+                BackSlash();
+            }
+            tempDuration -= Time.deltaTime;
+        }
+        else
+        {
+            if (isActive)
+            {
+                DesactivateHitbox();
+                //reset
+                transform.localPosition = originPos;
+                parent.transform.localEulerAngles = new Vector3();
+                tempDis = 0;
+                tempDisBack = 0;
+            }
+            timer -= Time.deltaTime;
+        }
+
+        if (timer <= 0)
+        {
+            tempDuration = durationEffect;
+        }
+    }
+    
     public override void Setup()
     {
         base.Setup();
-        tempDistance = slashDistance;
         tempPos = transform.localPosition;
-        collider = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        collider.enabled = false;
-        sprite.enabled = false;
+        originPos = transform.localPosition;
+        tempDis = 0;
+        tempDisBack = 0;
+
     }
 
     private void Slash()
     {
-        isSlashing = true;
-        if (slashDistance > 0)
+        if (tempDis <= slashDistance)
         {
-            Vector3 temp = transform.localPosition;
-            temp.x -= slashSpeed * Time.deltaTime;
-            transform.localPosition = temp;
-            slashDistance -= slashSpeed * Time.deltaTime;
-        }
-        else
-        {
-            slashDistance = tempDistance;
-            transform.localPosition = tempPos;
-            timer = cooldown;
-            collider.enabled = false;
-            sprite.enabled = false;
+            if (!isBackSword)
+            {
+                tempPos = transform.localPosition;
+                tempPos.x -= slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            else
+            {
+                tempPos = transform.localPosition;
+                tempPos.x += slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            tempDis += slashSpeed * Time.deltaTime;
         }
     }
 
-    private void Orientate(Transform target)
+    private void BackSlash()
     {
-        transform.LookAt(target);
+        if (tempDisBack <= slashDistance)
+        {
+            if (!isBackSword)
+            {
+                tempPos = transform.localPosition;
+                tempPos.x += slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            else
+            {
+                tempPos = transform.localPosition;
+                tempPos.x -= slashSpeed * Time.deltaTime;
+                transform.localPosition = tempPos;
+            }
+            tempDisBack += slashSpeed * Time.deltaTime;
+        }
     }
+    
 }

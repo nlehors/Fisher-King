@@ -55,6 +55,9 @@ public class FishingController : MonoBehaviour
                 if (successCount>=1)
                 {
                     player.playerMoney++;
+                    
+                    fishingManager.FishInterfaceActivate();
+                    fishingManager.NewFish();
                 }
                 
                 fishingUI.SetActive(false);
