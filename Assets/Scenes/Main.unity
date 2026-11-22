@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katana
       objectReference: {fileID: 0}
+    - target: {fileID: 8351769000514731131, guid: 5054185cd26ff7643a547383dc7b63a2, type: 3}
+      propertyPath: cooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351769000514731131, guid: 5054185cd26ff7643a547383dc7b63a2, type: 3}
+      propertyPath: durationEffect
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8394213247815326615, guid: 5054185cd26ff7643a547383dc7b63a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

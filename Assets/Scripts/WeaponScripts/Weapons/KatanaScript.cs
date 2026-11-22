@@ -4,55 +4,84 @@ using UnityEngine;
 
 public class KatanaScript : WeaponParent
 {
-    public float slashDistance;
     public float slashSpeed;
+    public float slashDistance;
     
-    private float tempDistance;
     private Vector3 tempPos;
-    
-    
-    private void Update()
+    private float tempDis;
+    private Vector3 originPos;
+
+    private void FixedUpdate()
     {
-        //Debug.Log(collider.enabled);
+        Debug.Log(tempDis);
+        if (tempDuration > 0)
+        {
+            timer = cooldown;
+            if (!isActive)
+            {
+                ActivateHitbox();
+                GetNearestEnnemy();
+                if (nearestEnnemy != null)
+                {
+                    //Orientate(nearestEnnemy.transform);
+                }
+            }
+            Slash();
+            tempDuration -= Time.deltaTime;
+        }
+        else
+        {
+            if (isActive)
+            {
+                DesactivateHitbox();
+                //reset
+                transform.localPosition = originPos;
+                tempDis = 0;
+
+            }
+            timer -= Time.deltaTime;
+        }
+
         if (timer <= 0)
         {
-            Slash();
+            tempDuration = durationEffect;
         }
-        timer -= Time.deltaTime;
-        
-        if (isActive == false)
-        {
-            GetNearestEnnemy();
-            Orientate(nearestEnnemy.transform);
-        }
-        
     }
+
+    //private void Update()
+    //{
+    //    //Debug.Log(collider.enabled);
+    //    if (timer <= 0)
+    //    {
+    //        Slash();
+    //    }
+    //    timer -= Time.deltaTime;
+    //    
+    //    if (isActive == false)
+    //    {
+    //        GetNearestEnnemy();
+    //        Orientate(nearestEnnemy.transform);
+    //    }
+    //    
+    //}
 
     public override void Setup()
     {
         base.Setup();
-        tempDistance = slashDistance;
         tempPos = transform.localPosition;
-        
+        originPos = transform.localPosition;
+        tempDis = 0;
+
     }
 
     private void Slash()
     {
-        ActivateHitbox();
-        if (slashDistance > 0)
+        if (tempDis <= slashDistance)
         {
             tempPos = transform.localPosition;
             tempPos.x -= slashSpeed * Time.deltaTime;
             transform.localPosition = tempPos;
-            slashDistance -= slashSpeed * Time.deltaTime;
-            //Debug.Log(slashDistance);
-        }
-        else
-        {
-            slashDistance = tempDistance;
-            transform.localPosition = tempPos;
-            timer = cooldown;
-            DesactivateHitbox();
+            tempDis += slashSpeed * Time.deltaTime;
         }
     }
     

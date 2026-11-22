@@ -13,7 +13,7 @@ public class WeaponParent : MonoBehaviour
     
     [SerializeField]protected float timer;
     protected float tempDuration;
-    [SerializeField]protected float IndexLvl;
+    //[SerializeField]protected float IndexLvl;
     protected float totalDamage;
     
     [HideInInspector]public bool isActive = false;

@@ -51,7 +51,7 @@ public class CutlassScript : WeaponParent
                 if (tempStabDuration == 0)
                 {
                     Stab();
-                    Debug.Log("je stab !");
+                    //Debug.Log("je stab !");
                 }
                 tempStabDuration += Time.fixedDeltaTime;
                 if (tempStabDuration >= stabDuration)
