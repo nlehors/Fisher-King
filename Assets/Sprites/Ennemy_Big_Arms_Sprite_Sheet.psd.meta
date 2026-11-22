@@ -1,0 +1,381 @@
+fileFormatVersion: 2
+guid: 2d4548bd2fc9b8b469e8680a2b81d72c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6264625716957119913
+    second: Ennemy_Big_Arms_Sprite_Sheet_0
+  - first:
+      213: -431900061405257390
+    second: Ennemy_Big_Arms_Sprite_Sheet_1
+  - first:
+      213: 2745328485102655213
+    second: Ennemy_Big_Arms_Sprite_Sheet_2
+  - first:
+      213: -4586648698280982390
+    second: Ennemy_Big_Arms_Sprite_Sheet_3
+  - first:
+      213: 145596592792834614
+    second: Ennemy_Big_Arms_Sprite_Sheet_4
+  - first:
+      213: -5436465970493124266
+    second: Ennemy_Big_Arms_Sprite_Sheet_5
+  - first:
+      213: -3434832207739238333
+    second: Ennemy_Big_Arms_Sprite_Sheet_6
+  - first:
+      213: 444033293617538990
+    second: Ennemy_Big_Arms_Sprite_Sheet_7
+  - first:
+      213: 3469242544515437439
+    second: Ennemy_Big_Arms_Sprite_Sheet_8
+  - first:
+      213: 6306296348422252267
+    second: Ennemy_Big_Arms_Sprite_Sheet_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1166
+        width: 110
+        height: 129
+      alignment: 9
+      pivot: {x: 0.9179843, y: 0.9139073}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75a7ef11a149f09a0800000000000000
+      internalID: -6264625716957119913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1162
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2516875be25910af0800000000000000
+      internalID: -431900061405257390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 1178
+        width: 242
+        height: 217
+      alignment: 9
+      pivot: {x: 0.61644727, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de61e4a36bd591620800000000000000
+      internalID: 2745328485102655213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 1179
+        width: 180
+        height: 209
+      alignment: 9
+      pivot: {x: 0.88727146, y: 0.91159654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a88447d5f43f850c0800000000000000
+      internalID: -4586648698280982390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 628
+        width: 487
+        height: 260
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56623393}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6329ce96453450200800000000000000
+      internalID: 145596592792834614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 699
+        width: 100
+        height: 173
+      alignment: 9
+      pivot: {x: 0.09818237, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6511243e00bcd84b0800000000000000
+      internalID: -5436465970493124266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 135
+        width: 121
+        height: 123
+      alignment: 9
+      pivot: {x: 0.9200964, y: 0.91326517}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 348c1aa3e460550d0800000000000000
+      internalID: -3434832207739238333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 121
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea7258e8de5892600800000000000000
+      internalID: 444033293617538990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 137
+        width: 242
+        height: 217
+      alignment: 9
+      pivot: {x: 0.6092252, y: 0.48126003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f73d381a6b9352030800000000000000
+      internalID: 3469242544515437439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemy_Big_Arms_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 112
+        width: 180
+        height: 209
+      alignment: 9
+      pivot: {x: 0.884061, y: 0.90859956}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be62d00ed17748750800000000000000
+      internalID: 6306296348422252267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0d234baea27642b4081d083d8eaa49f7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Ennemy_Big_Arms_Sprite_Sheet_0: -6264625716957119913
+      Ennemy_Big_Arms_Sprite_Sheet_1: -431900061405257390
+      Ennemy_Big_Arms_Sprite_Sheet_2: 2745328485102655213
+      Ennemy_Big_Arms_Sprite_Sheet_3: -4586648698280982390
+      Ennemy_Big_Arms_Sprite_Sheet_4: 145596592792834614
+      Ennemy_Big_Arms_Sprite_Sheet_5: -5436465970493124266
+      Ennemy_Big_Arms_Sprite_Sheet_6: -3434832207739238333
+      Ennemy_Big_Arms_Sprite_Sheet_7: 444033293617538990
+      Ennemy_Big_Arms_Sprite_Sheet_8: 3469242544515437439
+      Ennemy_Big_Arms_Sprite_Sheet_9: 6306296348422252267
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
