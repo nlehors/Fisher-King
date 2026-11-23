@@ -28,72 +28,72 @@ public class NewShopManager : MonoBehaviour
     
     public Dictionary <string,float> weaponsDictionary = new Dictionary <string,float> {
         { "katana", 0 },
-        { "harpoonGun", 0 },
-        { "dynamite", 0 }, 
-        { "fishingNet", 0 },
+        //{ "harpoonGun", 0 },
+        //{ "dynamite", 0 }, 
+        //{ "fishingNet", 0 },
         
         { "molotov", 0 },
         { "cutlass", 0 },
-        { "flintlock", 0 },
-        { "canon", 0 },
-        
-        { "turret", 0 },
-        { "torpedo", 0 },
-        { "seaMine", 0 },
-        { "propeller", 0 }
+        //{ "flintlock", 0 },
+        //{ "canon", 0 },
+        //
+        //{ "turret", 0 },
+        //{ "torpedo", 0 },
+        //{ "seaMine", 0 },
+        //{ "propeller", 0 }
     };//si vous changez les noms de ça le jeu explose
     
     Dictionary <string,int> weaponsCostDictionary = new Dictionary <string,int> {
         { "katana", 1 },
-        { "harpoonGun", 2 },
-        { "dynamite", 3 }, 
-        { "fishingNet", 4 },
+        //{ "harpoonGun", 2 },
+        //{ "dynamite", 3 }, 
+        //{ "fishingNet", 4 },
         
         { "molotov", 5 },
         { "cutlass", 6 },
-        { "flintlock", 7 },
-        { "canon", 8 },
-        
-        { "turret", 9 },
-        { "torpedo", 10 },
-        { "seaMine", 11 },
-        { "propeller", 12 }
+        //{ "flintlock", 7 },
+        //{ "canon", 8 },
+        //
+        //{ "turret", 9 },
+        //{ "torpedo", 10 },
+        //{ "seaMine", 11 },
+        //{ "propeller", 12 }
     };//si vous changez les noms de ça le jeu explose
     
     List<string> weaponsNames = new List<string>
     {
         "katana",
-        "harpoonGun",
-        "dynamite",
-        "fishingNet",
+        //"harpoonGun",
+        //"dynamite",
+        //"fishingNet",
         
         "molotov",
         "cutlass",
-        "flintlock",
-        "canon",
-        
-        "turret",
-        "torpedo",
-        "seaMine",
-        "propeller"
+        //"flintlock",
+        //"canon",
+        //
+        //"turret",
+        //"torpedo",
+        //"seaMine",
+        //"propeller"
     };
     
     List<string> shopWeaponTextList = new List<string>
     {
         "Katana",
-        "Harpoon Gun",
-        "Dynamite",
-        "Fishing Net",
+        //"Harpoon Gun",
+        //"Dynamite",
+        //"Fishing Net",
         
         "Molotov",
         "Cutlass",
-        "Flintlock",
-        "Canon",
-        
-        "Turret",
-        "Torpedo",
-        "SeaMine",
-        "Propeller"
+        //"Flintlock",
+        //"Canon",
+        //
+        //"Turret",
+        //"Torpedo",
+        //"SeaMine",
+        //"Propeller"
     };
     
     void Start()
@@ -114,29 +114,30 @@ public class NewShopManager : MonoBehaviour
         //    openShopUI.SetActive(Player.isOnShop);
         //}
 
-        if (interaction.WasPerformedThisFrame() && Player.isOnShop && !shopActive)
-        {
-            ShopActivate(Player.zoneWhereIam.gameObject);
-        }
+        //if (interaction.WasPerformedThisFrame() && Player.isOnShop && !shopActive)
+        //{
+        //    ShopActivate(Player.zoneWhereIam.gameObject);
+        //}
 
         if (callShop.WasPerformedThisFrame() && !shopActive)
         {
+            shopActive = true;
             ShopActivateFromAnywhere();
         }
     }
 
     public void ShopActivateFromAnywhere()
     {
-        randomButton1 = Random.Range(0, 12);
-        randomButton2 = Random.Range(0, 12);
+        randomButton1 = Random.Range(0, weaponsDictionary.Count);
+        randomButton2 = Random.Range(0, weaponsDictionary.Count);
         while (randomButton1 == randomButton2)
         {
-            randomButton2 = Random.Range(0, 12);
+            randomButton2 = Random.Range(0, weaponsDictionary.Count);
         }
-        randomButton3 = Random.Range(0, 12);
+        randomButton3 = Random.Range(0, weaponsDictionary.Count);
         while (randomButton1 == randomButton3 | randomButton2 == randomButton3)
         {
-            randomButton2 = Random.Range(0, 12);
+            randomButton2 = Random.Range(0, weaponsDictionary.Count);
         }
             
         button1.text = shopWeaponTextList[randomButton1] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton1]];
@@ -146,8 +147,6 @@ public class NewShopManager : MonoBehaviour
         Time.timeScale = 0;
         shopUI.SetActive(true);
         openShopUI.SetActive(false);
-        
-        shopActive = true;
     }
     
     public void ShopActivate(GameObject shop)
