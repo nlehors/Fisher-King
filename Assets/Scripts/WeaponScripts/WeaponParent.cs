@@ -7,13 +7,11 @@ public class WeaponParent : MonoBehaviour
 {
     [SerializeField]public float damage = 10f;
     [SerializeField]public float cooldown = 10f;
-    [SerializeField] public float durationEffect = 3;
-    
-    //[SerializeField] public GameObject prefabToGenerate;
-    
+    [SerializeField]public float durationEffect = 3;
     [SerializeField]protected float timer;
+    
+    
     protected float tempDuration;
-    //[SerializeField]protected float IndexLvl;
     protected float totalDamage;
     
     [HideInInspector]public bool isActive = false;
@@ -67,7 +65,6 @@ public class WeaponParent : MonoBehaviour
     public void GetNearestEnnemy()
     {
         //jpp de ce code de con
-        //GameObject tempEnnemy = null;
         float distanceMinPlayer = 10000000000f;
         foreach (GameObject ennemi in gameManager.ennemiList)
         { 
@@ -79,8 +76,8 @@ public class WeaponParent : MonoBehaviour
                 nearestEnnemy = ennemi;
             }
         }
-        
     }
+    
     public void Damage(Ennemi target)
     {
         totalDamage = damage + playerScript.baseDamage;
@@ -110,12 +107,4 @@ public class WeaponParent : MonoBehaviour
         collider.enabled = false;
         sprite.enabled = false;
     }
-    
-    
-    
-    // fonction à move dans un script hérité
-    //private void CreateProjectile()
-    //{
-    //    GameObject lastBullet = Instantiate(prefabToGenerate, transform.position, transform.rotation);
-    //}
 }

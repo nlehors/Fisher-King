@@ -130,15 +130,15 @@ public class NewShopManager : MonoBehaviour
     {
         randomButton1 = Random.Range(0, weaponsDictionary.Count);
         randomButton2 = Random.Range(0, weaponsDictionary.Count);
-        while (randomButton1 == randomButton2)
-        {
-            randomButton2 = Random.Range(0, weaponsDictionary.Count);
-        }
+        //while (randomButton1 == randomButton2)
+        //{
+        //    randomButton2 = Random.Range(0, weaponsDictionary.Count);
+        //}
         randomButton3 = Random.Range(0, weaponsDictionary.Count);
-        while (randomButton1 == randomButton3 | randomButton2 == randomButton3)
-        {
-            randomButton2 = Random.Range(0, weaponsDictionary.Count);
-        }
+        //while (randomButton1 == randomButton3 | randomButton2 == randomButton3)
+        //{
+        //    randomButton2 = Random.Range(0, weaponsDictionary.Count);
+        //}
             
         button1.text = shopWeaponTextList[randomButton1] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton1]];
         button2.text = shopWeaponTextList[randomButton2] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton2]];
