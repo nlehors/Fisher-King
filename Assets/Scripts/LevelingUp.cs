@@ -52,17 +52,9 @@ public class LevelingUp : MonoBehaviour
         {
             canUpgrade = false;
 
-            randomButton1 = Random.Range(0, 12);
-            randomButton2 = Random.Range(0, 12);
-            while (randomButton1 == randomButton2)
-            {
-                randomButton2 = Random.Range(0, 12);
-            }
-            randomButton3 = Random.Range(0, 12);
-            while (randomButton1 == randomButton3 | randomButton2 == randomButton3)
-            {
-                randomButton2 = Random.Range(0, 12);
-            }
+            randomButton2 = Random.Range(1, playerScript.playerStatsDictionary.Count - 1);
+            randomButton3 = Random.Range(randomButton2 + 1, playerScript.playerStatsDictionary.Count);
+            randomButton1 = Random.Range(0, randomButton2);
             
             button1.text = playerScript.uprgradeButtonTextList[randomButton1];
             button2.text = playerScript.uprgradeButtonTextList[randomButton2];

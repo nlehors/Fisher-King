@@ -2,31 +2,13 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     float playerHealth;
     public float baseDamage = 5;//à remplacer
-    
-    //stats améliorables
-    //[Header("stats améliorables")] 
-    //public float playerMaxHealth;
-    //public float playerSpeed;
-    //
-    //public float playerDamageModifier;
-    //public float playerAttackSpeedModifer;
-    //public float playerCritChance;
-    //public float playerCritDamage;
-    //public float playerAttackAreaSize;
-    //public float playerKnockback;
-    //
-    //public float playerRegeneration;
-    //public float playerArmor;
-    //public float playerEffectDuration;//c'est censé servir à quelque chose askip
-    //public float playerLuck;
-    //[Space(10f)] 
     
     [SerializeField] public Dictionary <string,float> playerStatsDictionary = new Dictionary <string,float> {
         { "playerMaxHealth", 0 },
@@ -89,7 +71,6 @@ public class Player : MonoBehaviour
     InputAction moveRight = InputSystem.actions.FindAction("MoveRight");
     InputAction moveUp = InputSystem.actions.FindAction("MoveUp");
     InputAction moveDown = InputSystem.actions.FindAction("MoveDown");
-    
     InputAction interaction = InputSystem.actions.FindAction("Interaction");
 
     public string fishingZoneTag = "Fishing Zone";
@@ -103,6 +84,11 @@ public class Player : MonoBehaviour
 
     public NewShopManager shopManager;
     public MenuManager MenuManager;
+
+    public GameObject boatSprite;
+    int rotationFix;
+    
+    public Image lifeBar;
     
     void Start()
     {
@@ -115,7 +101,7 @@ public class Player : MonoBehaviour
 
         invincibilityTimeRemaining -= Time.deltaTime;
 
-        if (playerHealth == 0)
+        if (playerHealth <= 0)
         {
             MenuManager.ReturnToMenu();
         }
@@ -127,6 +113,8 @@ public class Player : MonoBehaviour
             
             regenTimeRemaining = regenTime;
         }
+        
+        lifeBar.fillAmount = playerHealth / playerStatsDictionary["playerMaxHealth"];
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -167,7 +155,7 @@ public class Player : MonoBehaviour
         {
             if (invincibilityTimeRemaining < 0)
             {
-                playerHealth--;
+                playerHealth -= other.GetComponent<Ennemi>().ennemiContactDamage;
                 invincibilityTimeRemaining = invincibilityTime;
             }
         }
@@ -179,10 +167,16 @@ public class Player : MonoBehaviour
         if (moveLeft.IsPressed())
         {
             mouvement.x = - 1;
+            rotationFix = 1;
         }
         else if (moveRight.IsPressed())
         {
             mouvement.x = 1;
+            rotationFix = -1;
+        }
+        else
+        {
+            rotationFix = 1;
         }
         
         if (moveUp.IsPressed())
@@ -196,8 +190,8 @@ public class Player : MonoBehaviour
 
         mouvement = Vector2.Normalize(mouvement) * playerStatsDictionary["playerSpeed"] * Time.deltaTime;
 
+        boatSprite.transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(new Vector2(0, 1), mouvement) * rotationFix);
+        
         transform.position += new Vector3(mouvement.x,mouvement.y, 0);
     }
-
-    
 }

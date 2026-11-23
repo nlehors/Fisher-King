@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +35,9 @@ public class GameManager : MonoBehaviour
     bool isBossAlive;
     
     [SerializeField] GameObject uiWin;
+
+    public TMP_Text timeOfRunDisplay;
+    float timeOfRun;
     
     void Start()
     {
@@ -41,6 +47,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         moneyDisplay.text = "Money : " + player.playerMoney;
+        
+        timeOfRun += Time.deltaTime;
+        timeOfRunDisplay.text = (int)timeOfRun / 60 + ":" + math.round(timeOfRun) % 60;
 
         if (numberOfEnnemiToKill <= numberOfEnnemiKilled)
         {

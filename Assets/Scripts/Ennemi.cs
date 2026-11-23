@@ -6,6 +6,7 @@ public class Ennemi : MonoBehaviour
 {
     public float ennemiSpeed;
     public float ennemiLife;
+    public float ennemiContactDamage;
 
     public GameObject xpPrefab;
     

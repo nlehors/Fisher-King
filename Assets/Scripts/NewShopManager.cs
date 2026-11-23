@@ -28,73 +28,81 @@ public class NewShopManager : MonoBehaviour
     
     public Dictionary <string,float> weaponsDictionary = new Dictionary <string,float> {
         { "katana", 0 },
-        //{ "harpoonGun", 0 },
-        //{ "dynamite", 0 }, 
-        //{ "fishingNet", 0 },
+        { "harpoonGun", 0 },
+        { "dynamite", 0 }, 
+        { "fishingNet", 0 },
         
         { "molotov", 0 },
         { "cutlass", 0 },
-        //{ "flintlock", 0 },
-        //{ "canon", 0 },
-        //
-        //{ "turret", 0 },
-        //{ "torpedo", 0 },
-        //{ "seaMine", 0 },
-        //{ "propeller", 0 }
+        { "flintlock", 0 },
+        { "canon", 0 },
+        
+        { "turret", 0 },
+        { "torpedo", 0 },
+        { "seaMine", 0 },
+        { "propeller", 0 }
     };//si vous changez les noms de ça le jeu explose
     
     Dictionary <string,int> weaponsCostDictionary = new Dictionary <string,int> {
         { "katana", 1 },
-        //{ "harpoonGun", 2 },
-        //{ "dynamite", 3 }, 
-        //{ "fishingNet", 4 },
+        { "harpoonGun", 2 },
+        { "dynamite", 3 }, 
+        { "fishingNet", 4 },
         
         { "molotov", 5 },
         { "cutlass", 6 },
-        //{ "flintlock", 7 },
-        //{ "canon", 8 },
-        //
-        //{ "turret", 9 },
-        //{ "torpedo", 10 },
-        //{ "seaMine", 11 },
-        //{ "propeller", 12 }
+        { "flintlock", 7 },
+        { "canon", 8 },
+        
+        { "turret", 9 },
+        { "torpedo", 10 },
+        { "seaMine", 11 },
+        { "propeller", 12 }
     };//si vous changez les noms de ça le jeu explose
     
     List<string> weaponsNames = new List<string>
     {
         "katana",
-        //"harpoonGun",
-        //"dynamite",
-        //"fishingNet",
+        "harpoonGun",
+        "dynamite",
+        "fishingNet",
         
         "molotov",
         "cutlass",
-        //"flintlock",
-        //"canon",
-        //
-        //"turret",
-        //"torpedo",
-        //"seaMine",
-        //"propeller"
+        "flintlock",
+        "canon",
+        
+        "turret",
+        "torpedo",
+        "seaMine",
+        "propeller"
     };
     
     List<string> shopWeaponTextList = new List<string>
     {
         "Katana",
-        //"Harpoon Gun",
-        //"Dynamite",
-        //"Fishing Net",
+        "Harpoon Gun",
+        "Dynamite",
+        "Fishing Net",
         
         "Molotov",
         "Cutlass",
-        //"Flintlock",
-        //"Canon",
-        //
-        //"Turret",
-        //"Torpedo",
-        //"SeaMine",
-        //"Propeller"
+        "Flintlock",
+        "Canon",
+        
+        "Turret",
+        "Torpedo",
+        "SeaMine",
+        "Propeller"
     };
+
+    List<int> indexMadness = new List<int>
+    {
+        0,1,2,3,4,5,6,7,8,9,10,11
+    };
+
+    bool poorShaming;
+    public GameObject poorShamingDisplay;
     
     void Start()
     {
@@ -105,28 +113,55 @@ public class NewShopManager : MonoBehaviour
     {
         openShopUI.SetActive(Player.isOnShop);
         
-        //if (shopActive)
-        //{
-        //    openShopUI.SetActive(false);
-        //}
-        //else
-        //{
-        //    openShopUI.SetActive(Player.isOnShop);
-        //}
+        /*
+        if (shopActive)
+        {
+            openShopUI.SetActive(false);
+        }
+        else
+        {
+            openShopUI.SetActive(Player.isOnShop);
+        }
 
-        //if (interaction.WasPerformedThisFrame() && Player.isOnShop && !shopActive)
-        //{
-        //    ShopActivate(Player.zoneWhereIam.gameObject);
-        //}
+        if (interaction.WasPerformedThisFrame() && Player.isOnShop && !shopActive)
+        {
+            ShopActivate(Player.zoneWhereIam.gameObject);
+        }*/
 
         if (callShop.WasPerformedThisFrame() && !shopActive)
         {
             shopActive = true;
             ShopActivateFromAnywhere();
         }
+
+        poorShamingDisplay.SetActive(shopActive && poorShaming);
     }
 
     public void ShopActivateFromAnywhere()
+    {
+        List<int> indexMadnessInst = new List<int>();
+        foreach (int progIsPain in indexMadness)
+        {
+            indexMadnessInst.Add(progIsPain);
+        }
+        
+        randomButton1 = indexMadnessInst[Random.Range(0, indexMadnessInst.Count)];
+        indexMadnessInst.Remove(randomButton1);
+        randomButton2 = indexMadnessInst[Random.Range(0, indexMadnessInst.Count)];
+        indexMadnessInst.Remove(randomButton2);
+        randomButton3 = indexMadnessInst[Random.Range(0, indexMadnessInst.Count)];
+        
+        button1.text = shopWeaponTextList[randomButton1] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton1]];
+        button2.text = shopWeaponTextList[randomButton2] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton2]];
+        button3.text = shopWeaponTextList[randomButton3] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton3]];
+        
+        Time.timeScale = 0;
+        shopUI.SetActive(true);
+        openShopUI.SetActive(false);
+    }
+    
+    /*
+    public void ShopActivate(GameObject shop)
     {
         randomButton1 = Random.Range(0, weaponsDictionary.Count);
         randomButton2 = Random.Range(0, weaponsDictionary.Count);
@@ -147,31 +182,8 @@ public class NewShopManager : MonoBehaviour
         Time.timeScale = 0;
         shopUI.SetActive(true);
         openShopUI.SetActive(false);
-    }
-    
-    public void ShopActivate(GameObject shop)
-    {
-        randomButton1 = Random.Range(0, 12);
-        randomButton2 = Random.Range(0, 12);
-        while (randomButton1 == randomButton2)
-        {
-            randomButton2 = Random.Range(0, 12);
-        }
-        randomButton3 = Random.Range(0, 12);
-        while (randomButton1 == randomButton3 | randomButton2 == randomButton3)
-        {
-            randomButton2 = Random.Range(0, 12);
-        }
-            
-        button1.text = shopWeaponTextList[randomButton1] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton1]];
-        button2.text = shopWeaponTextList[randomButton2] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton2]];
-        button3.text = shopWeaponTextList[randomButton3] + " cost : "+ weaponsCostDictionary[weaponsNames[randomButton3]];
-        
-        Time.timeScale = 0;
-        shopUI.SetActive(true);
-        openShopUI.SetActive(false);
         activeShop = shop;
-    }
+    }*/
     
     public void ShopDeactivate()
     {
@@ -188,33 +200,53 @@ public class NewShopManager : MonoBehaviour
         Player.isOnShop = false;
         
         shopActive = false;
+
+        poorShaming = false;
     }
 
     public void Button1()
     {
-        ShopDeactivate();
-        
-        weaponsDictionary[weaponsNames[randomButton1]]++;
-
-        Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton1]];
+        if (Player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton1]])
+        {
+            weaponsDictionary[weaponsNames[randomButton1]]++;
+            Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton1]];
+            
+            ShopDeactivate();
+        }
+        else
+        {
+            poorShaming = true;
+        }
     }
     
     public void Button2()
     {
-        ShopDeactivate();
-        
-        weaponsDictionary[weaponsNames[randomButton2]]++;
-        
-        Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton2]];
+        if (Player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton2]])
+        {
+            weaponsDictionary[weaponsNames[randomButton2]]++;
+            Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton2]];
+            
+            ShopDeactivate();
+        }
+        else
+        {
+            poorShaming = true;
+        }
     }
     
     public void Button3()
     {
-        ShopDeactivate();
-        
-        weaponsDictionary[weaponsNames[randomButton3]]++;
-        
-        Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton3]];
+        if (Player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton3]])
+        {
+            weaponsDictionary[weaponsNames[randomButton3]]++;
+            Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton3]];
+            
+            ShopDeactivate();
+        }
+        else
+        {
+            poorShaming = true;
+        }
     }
 }
 
