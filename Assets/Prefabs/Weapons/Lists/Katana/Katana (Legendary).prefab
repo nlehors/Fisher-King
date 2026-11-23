@@ -353,7 +353,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   slashSpeed: 5
   slashDistance: 3
-  isBackSword: 0
+  isBackSword: 1
   canBackNForth: 1
 --- !u!212 &3040855008673090922
 SpriteRenderer:
