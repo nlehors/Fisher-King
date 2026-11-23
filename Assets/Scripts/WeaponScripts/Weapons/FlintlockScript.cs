@@ -14,6 +14,7 @@ public class FlintlockScript : WeaponShooterParent
                 GetNearestEnnemy();
                 if (nearestEnnemy != null)
                 {
+                    Orientate(nearestEnnemy.transform);
                     CreateProjectile();
                     lastBulletShot.GetComponent<BulletParent>().Shoot(nearestEnnemy.transform);
                 }

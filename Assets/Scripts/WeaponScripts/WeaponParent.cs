@@ -9,6 +9,7 @@ public class WeaponParent : MonoBehaviour
     [SerializeField]public float cooldown = 10f;
     [SerializeField]public float durationEffect = 3;
     [SerializeField]protected float timer;
+    [SerializeField] public float detectionDistance;
     
     
     protected float tempDuration;
@@ -65,7 +66,7 @@ public class WeaponParent : MonoBehaviour
     public void GetNearestEnnemy()
     {
         //jpp de ce code de con
-        float distanceMinPlayer = 10000000000f;
+        float distanceMinPlayer = detectionDistance;
         foreach (GameObject ennemi in gameManager.ennemiList)
         { 
             
