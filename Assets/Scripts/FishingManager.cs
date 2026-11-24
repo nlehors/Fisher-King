@@ -22,6 +22,8 @@ public class FishingManager : MonoBehaviour
     public TMP_Text upgradeText;
     int randomUpgrade;
 
+    public float fishingZoneCooldown;
+
     private void Start()
     {
         gotAfishUi.SetActive(false);

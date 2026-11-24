@@ -15,9 +15,4 @@ public class SplashTextManager : MonoBehaviour
             splashText.text = splashTextList[Random.Range(0, splashTextList.Count)];
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
     public string fishingZoneTag = "Fishing Zone";
     public string shopTag = "Shop";
     public string ennemiTag = "Ennemi";
+    public string ennemiBulletTag = "EnnemiBullet";
 
     public bool isOnFishingZone;
     public bool isOnShop;
@@ -131,6 +132,10 @@ public class Player : MonoBehaviour
 
             zoneWhereIam = other;
         }
+        else if (other.CompareTag(ennemiBulletTag))
+        {
+            PlayerTakeDamage(other.GetComponent<WeaponShooterParent>().damage);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -153,11 +158,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag(ennemiTag))
         {
-            if (invincibilityTimeRemaining < 0)
-            {
-                playerHealth -= other.GetComponent<Ennemi>().ennemiContactDamage;
-                invincibilityTimeRemaining = invincibilityTime;
-            }
+            PlayerTakeDamage(other.GetComponent<Ennemi>().ennemiContactDamage);
         }
     }
 
@@ -193,5 +194,14 @@ public class Player : MonoBehaviour
         boatSprite.transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(new Vector2(0, 1), mouvement) * rotationFix);
         
         transform.position += new Vector3(mouvement.x,mouvement.y, 0);
+    }
+
+    void PlayerTakeDamage(float damageForce)
+    {
+        if (invincibilityTimeRemaining < 0)
+        {
+            playerHealth -= damageForce;
+            invincibilityTimeRemaining = invincibilityTime;
+        }
     }
 }
