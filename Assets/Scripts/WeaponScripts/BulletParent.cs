@@ -5,7 +5,6 @@ public class BulletParent : MonoBehaviour
 {
     public WeaponParent weaponScript;
     public float lifeTime = 10f;
-    public string tagCollision;
     
     private float bulletSpeed = 1f;
     private Vector2 dirVector;
@@ -29,48 +28,30 @@ public class BulletParent : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (tagCollision == "Ennemi")
+        if (collision.CompareTag("Ennemi"))
         {
-            if (collision.CompareTag("Ennemi"))
+            Ennemi ennemiScript = collision.GetComponent<Ennemi>();
+
+            weaponScript.Damage(ennemiScript);
+
+            if (ennemiScript.ennemiLife <= 0)
             {
-                Ennemi ennemiScript = collision.GetComponent<Ennemi>();
-            
-                weaponScript.Damage(ennemiScript);
-            
-                if (ennemiScript.ennemiLife <= 0)
-                {
-                    ennemiScript.Death();
-                }
-                Destroy(gameObject);
+                ennemiScript.Death();
             }
+
+            Destroy(gameObject);
         }
-        else if (tagCollision == "Player")
-        {
-            if (collision.CompareTag("Player"))
-            {
-                Player playerScript = collision.GetComponent<Player>();
-            
-                //fonction qui damage le joueur;
-                
-                Destroy(gameObject);
-            }
-        }
-        
+
     }
 
     public void Shoot(Transform target)
     {
         dirVector = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-
-        if (tagCollision == "Ennemi")
+        dirVector *= bulletSpeed;
+        if (transform.CompareTag("Player"))
         {
-            dirVector = dirVector * bulletSpeed * player.GetComponent<Player>().playerStatsDictionary["playerSpeed"];
+            dirVector *= player.GetComponent<Player>().playerStatsDictionary["playerSpeed"]
         }
-        else
-        {
-            dirVector *= bulletSpeed;
-        }
-        
     }
     
 }
