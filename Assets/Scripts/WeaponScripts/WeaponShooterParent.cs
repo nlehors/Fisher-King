@@ -17,6 +17,7 @@ public class WeaponShooterParent : WeaponParent
     public override void Setup()
     {
         base.Setup();
+        sprite.enabled = true;
         tempBulletRound = bulletRound;
     }
     

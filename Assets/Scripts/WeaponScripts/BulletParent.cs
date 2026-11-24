@@ -5,9 +5,12 @@ public class BulletParent : MonoBehaviour
 {
     public WeaponParent weaponScript;
     public float lifeTime = 10f;
+    public string tagCollision;
+    
     private float bulletSpeed = 1f;
     private Vector2 dirVector;
-
+    
+    
     private Player player;
     
     
@@ -25,25 +28,49 @@ public class BulletParent : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    { 
-        if (collision.CompareTag("Ennemi"))
+    {
+        if (tagCollision == "Ennemi")
         {
-            Ennemi ennemiScript = collision.GetComponent<Ennemi>();
-            
-            weaponScript.Damage(ennemiScript);
-            
-            if (ennemiScript.ennemiLife <= 0)
+            if (collision.CompareTag("Ennemi"))
             {
-                ennemiScript.Death();
+                Ennemi ennemiScript = collision.GetComponent<Ennemi>();
+            
+                weaponScript.Damage(ennemiScript);
+            
+                if (ennemiScript.ennemiLife <= 0)
+                {
+                    ennemiScript.Death();
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
+        else if (tagCollision == "Player")
+        {
+            if (collision.CompareTag("Player"))
+            {
+                Player playerScript = collision.GetComponent<Player>();
+            
+                //fonction qui damage le joueur;
+                
+                Destroy(gameObject);
+            }
+        }
+        
     }
 
     public void Shoot(Transform target)
     {
-        dirVector = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y);
-        dirVector = Vector2.Normalize(dirVector) * bulletSpeed * player.GetComponent<Player>().playerStatsDictionary["playerSpeed"];
+        dirVector = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
+
+        if (tagCollision == "Ennemi")
+        {
+            dirVector = dirVector * bulletSpeed * player.GetComponent<Player>().playerStatsDictionary["playerSpeed"];
+        }
+        else
+        {
+            dirVector *= bulletSpeed;
+        }
+        
     }
     
 }
