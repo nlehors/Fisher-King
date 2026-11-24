@@ -27,6 +27,6 @@ public class WeaponShooterParent : WeaponParent
     public void CreateProjectile()
     {
         lastBulletShot = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        lastBulletShot.GetComponent<BulletParent>().weaponScript = this;
+        lastBulletShot.GetComponentInChildren<BulletParent>().weaponScript = this;
     }
 }

@@ -34,7 +34,7 @@ public class NewShopManager : MonoBehaviour
         
         { "molotov", 0 },
         { "cutlass", 0 },
-        //{ "flintlock", 0 },
+        { "flintlock", 0 },
         //{ "canon", 0 },
         //
         //{ "turret", 0 },
@@ -51,7 +51,7 @@ public class NewShopManager : MonoBehaviour
         
         { "molotov", 5 },
         { "cutlass", 6 },
-        //{ "flintlock", 7 },
+        { "flintlock", 7 },
         //{ "canon", 8 },
         //
         //{ "turret", 9 },
@@ -69,7 +69,7 @@ public class NewShopManager : MonoBehaviour
         
         "molotov",
         "cutlass",
-        //"flintlock",
+        "flintlock",
         //"canon",
         //
         //"turret",
@@ -87,7 +87,7 @@ public class NewShopManager : MonoBehaviour
         
         "Molotov",
         "Cutlass",
-        //"Flintlock",
+        "Flintlock",
         //"Canon",
         //
         //"Turret",
