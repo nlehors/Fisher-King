@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 109e589aa88e4874cadd010c285b7471
+guid: a95753770292ed7409893686aa37ad37
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5936356172364887011
-    second: R_0
+      213: -5153340267045729398
+    second: Militaire_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,27 +98,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: R_0
+      name: Militaire_0
       rect:
         serializedVersion: 2
-        x: 220
-        y: 614
+        x: 0
+        y: 0
         width: 474
         height: 315
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e3b1029c7c226250800000000000000
-      internalID: 5936356172364887011
+      spriteID: a8bc508a458ab78b0800000000000000
+      internalID: -5153340267045729398
       vertices: []
       indices: 
       edges: []
@@ -127,7 +140,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c28def57c5f0ba344ae7bcf87d4e0408
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -137,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      R_0: 5936356172364887011
+      Militaire_0: -5153340267045729398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
