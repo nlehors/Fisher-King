@@ -50,7 +50,7 @@ public class BulletParent : MonoBehaviour
         dirVector *= bulletSpeed;
         if (transform.CompareTag("Player"))
         {
-            dirVector *= player.GetComponent<Player>().playerStatsDictionary["playerSpeed"]
+            dirVector *= player.GetComponent<Player>().playerStatsDictionary["playerSpeed"];
         }
     }
     

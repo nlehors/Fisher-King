@@ -107,13 +107,7 @@ public class Player : MonoBehaviour
             MenuManager.ReturnToMenu();
         }
 
-        regenTimeRemaining -= Time.deltaTime;
-        if (regenTimeRemaining < 0 && playerHealth < playerStatsDictionary["playerMaxHealth"])
-        {
-            playerHealth += playerStatsDictionary["playerRegeneration"];
-            
-            regenTimeRemaining = regenTime;
-        }
+        PlayerRegen();
         
         lifeBar.fillAmount = playerHealth / playerStatsDictionary["playerMaxHealth"];
     }
@@ -129,12 +123,12 @@ public class Player : MonoBehaviour
         else if (other.CompareTag(shopTag))
         {
             isOnShop = true;
-
+        
             zoneWhereIam = other;
         }
         else if (other.CompareTag(ennemiBulletTag))
         {
-            PlayerTakeDamage(other.GetComponent<WeaponShooterParent>().damage);
+            PlayerTakeDamage(other.GetComponent<BulletParent>().weaponScript.damage);
         }
     }
 
@@ -202,6 +196,25 @@ public class Player : MonoBehaviour
         {
             playerHealth -= damageForce;
             invincibilityTimeRemaining = invincibilityTime;
+
+            //boatSprite.GetComponent<Animation>().Stop();
+            //boatSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            boatSprite.GetComponent<Animation>().Play("player damage");
+        }
+    }
+
+    void PlayerRegen()
+    {
+        regenTimeRemaining -= Time.deltaTime;
+        if (regenTimeRemaining < 0 && playerHealth < playerStatsDictionary["playerMaxHealth"])
+        {
+            playerHealth += playerStatsDictionary["playerRegeneration"];
+            
+            regenTimeRemaining = regenTime;
+            
+            //boatSprite.GetComponent<Animation>().Stop();
+            //boatSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            boatSprite.GetComponent<Animation>().Play("player regen");
         }
     }
 }

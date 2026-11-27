@@ -32,7 +32,7 @@ public class FishingController : MonoBehaviour
     }
     
     
-   public void QTE ()
+   public void QTE (FishingZone fishingZone)
     {
         
         pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime*fishingUI.transform.localScale.x);
@@ -56,8 +56,9 @@ public class FishingController : MonoBehaviour
                 {
                     player.playerMoney++;
                     
-                    fishingManager.FishInterfaceActivate();
+                    fishingManager.GotAFishInterfaceActivate();
                     fishingManager.NewFish();
+                    fishingZone.deactivationTimer = fishingManager.fishingZoneCooldown;
                 }
                 
                 fishingUI.SetActive(false);
@@ -94,6 +95,7 @@ public class FishingController : MonoBehaviour
             safeZones[0].gameObject.SetActive(true);
         }
     }
+    
 }
 
 //[Intro]

@@ -10,7 +10,7 @@ public class NewShopManager : MonoBehaviour
     
     public GameObject openShopUI;
 
-    public Player Player;
+    public Player player;
 
     public bool shopActive;
     GameObject activeShop;
@@ -107,11 +107,12 @@ public class NewShopManager : MonoBehaviour
     void Start()
     {
         shopUI.SetActive(false);
+        openShopUI.SetActive(false);
     }
     
     void Update()
     {
-        openShopUI.SetActive(Player.isOnShop);
+        //openShopUI.SetActive(player.isOnShop);
         
         /*
         if (shopActive)
@@ -197,7 +198,7 @@ public class NewShopManager : MonoBehaviour
             activeShop = null;
         }
         
-        Player.isOnShop = false;
+        player.isOnShop = false;
         
         shopActive = false;
 
@@ -206,10 +207,10 @@ public class NewShopManager : MonoBehaviour
 
     public void Button1()
     {
-        if (Player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton1]])
+        if (player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton1]])
         {
             weaponsDictionary[weaponsNames[randomButton1]]++;
-            Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton1]];
+            player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton1]];
             
             ShopDeactivate();
         }
@@ -221,10 +222,10 @@ public class NewShopManager : MonoBehaviour
     
     public void Button2()
     {
-        if (Player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton2]])
+        if (player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton2]])
         {
             weaponsDictionary[weaponsNames[randomButton2]]++;
-            Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton2]];
+            player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton2]];
             
             ShopDeactivate();
         }
@@ -236,10 +237,10 @@ public class NewShopManager : MonoBehaviour
     
     public void Button3()
     {
-        if (Player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton3]])
+        if (player.playerMoney >= weaponsCostDictionary[weaponsNames[randomButton3]])
         {
             weaponsDictionary[weaponsNames[randomButton3]]++;
-            Player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton3]];
+            player.playerMoney -= weaponsCostDictionary[weaponsNames[randomButton3]];
             
             ShopDeactivate();
         }

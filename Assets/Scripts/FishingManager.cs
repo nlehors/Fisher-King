@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class FishingManager : MonoBehaviour
 {
     public GameObject fishingUI;
-    public bool isnoyFishing;
+    //public bool isnoyFishing;
     public FishingController fishingController;
     
     [SerializeField] private List<FishData> fishDataList;
@@ -24,9 +24,23 @@ public class FishingManager : MonoBehaviour
 
     public float fishingZoneCooldown;
 
+    //public GameObject fishingZoneGreenPrefab;
+    //public GameObject fishingZoneRedPrefab;
+    //public GameObject fishingZoneBluePrefab;
+    //public GameObject fishingZoneYellowPrefab;
+    
+    //public List<GameObject> fishingZoneList = new List<GameObject>();
+    
+    GameObject activeFishingZone;
+    
     private void Start()
     {
         gotAfishUi.SetActive(false);
+
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    fishingZoneList.Add(transform.GetChild(i).gameObject);
+        //}
     }
 
     void Update()
@@ -34,7 +48,7 @@ public class FishingManager : MonoBehaviour
         fishingUI.SetActive(player.isOnFishingZone);
         if (player.isOnFishingZone)
         {
-            fishingController.QTE();
+            fishingController.QTE(player.zoneWhereIam.gameObject.GetComponent<FishingZone>());
         }
         else
         {
@@ -42,7 +56,7 @@ public class FishingManager : MonoBehaviour
         }
     }
 
-    public void FishInterfaceActivate()
+    public void GotAFishInterfaceActivate()
     {
         Time.timeScale = 0;
         gotAfishUi.SetActive(true);
