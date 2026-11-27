@@ -2,23 +2,54 @@ using UnityEngine;
 
 public class FlintlockScript : WeaponShooterParent
 {
+    public bool isSecondGun = false;
+    public bool canSplitBullet = false;
+    private GameObject secondNearestEnnemy;
+
+    private bool hasShot = false;
+    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    private void FixedUpdate()
     {
+        
         if (tempBulletRound > 0)
         {
             timer = cooldown;
             if (!isActive)
             {
                 isActive = true;
-                GetNearestEnnemy();
-                if (nearestEnnemy != null)
+                if (!isSecondGun)
                 {
-                    Orientate(nearestEnnemy.transform);
-                    CreateProjectile();
-                    lastBulletShot.GetComponent<BulletParent>().Shoot(nearestEnnemy.transform);
+                    GetNearestEnnemy();
+                    if (nearestEnnemy != null)
+                    {
+                        Orientate(nearestEnnemy.transform);
+                        CreateProjectile();
+                        if (canSplitBullet)
+                        {
+                            lastBulletShot.GetComponentInChildren<FlintlockBullet>().canSplit = true;
+                        }
+                        lastBulletShot.GetComponentInChildren<BulletParent>().Shoot(nearestEnnemy.transform);
+                    }
+                }
+                else
+                {
+                    GetSecondNearestEnnemy();
+                    if (secondNearestEnnemy != null)
+                    {
+                        Orientate(secondNearestEnnemy.transform);
+                        CreateProjectile();
+                        if (canSplitBullet)
+                        {
+                            lastBulletShot.GetComponentInChildren<FlintlockBullet>().canSplit = true;
+                        }
+                        lastBulletShot.GetComponentInChildren<BulletParent>().Shoot(secondNearestEnnemy.transform);
+                    }
                 }
             }
+
+        
             
             tempBulletRound --;
         }
@@ -29,7 +60,7 @@ public class FlintlockScript : WeaponShooterParent
                 isActive = false;
                 //reset
             }
-
+            
             timer -= Time.deltaTime;
         }
 
@@ -37,5 +68,25 @@ public class FlintlockScript : WeaponShooterParent
         {
             tempBulletRound = bulletRound;
         }
+        
     }
+
+
+    private void GetSecondNearestEnnemy()
+    {
+        GetNearestEnnemy();
+        float secondDistanceMinPlayer = detectionDistance;
+        foreach (GameObject ennemi in gameManager.ennemiList)
+        { 
+            if (Vector3.Distance(ennemi.transform.position,playerScript.transform.position) < secondDistanceMinPlayer && ennemi != nearestEnnemy)
+            {
+                secondDistanceMinPlayer = Vector3.Distance(ennemi.transform.position, playerScript.transform.position);
+              
+                secondNearestEnnemy = ennemi;
+            }
+        }
+    }
+   
+   
+   
 }

@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434879978757353619}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5837786975224936279}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1773289605203440744
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,12 +147,14 @@ MonoBehaviour:
   cooldown: 6
   durationEffect: 0
   timer: 0
-  detectionDistance: 3
+  detectionDistance: 5
   isActive: 0
   parent: {fileID: 4493254601268520143}
   gameManager: {fileID: 0}
   bulletPrefab: {fileID: 6339518754052386969, guid: 8d097afd7575bf24c9be786e0a5dda90, type: 3}
   bulletRound: 1
+  isSecondGun: 0
+  canSplitBullet: 0
 --- !u!1 &4493254601268520143
 GameObject:
   m_ObjectHideFlags: 0
